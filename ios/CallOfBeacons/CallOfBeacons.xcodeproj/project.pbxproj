@@ -20,6 +20,7 @@
 		316098251D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098241D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift */; };
 		3160983E1D00712400D50ABB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316098311D00710000D50ABB /* Alamofire.framework */; };
 		3160983F1D00712400D50ABB /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 316098311D00710000D50ABB /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		316098441D00716F00D50ABB /* COBPositionNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098431D00716F00D50ABB /* COBPositionNotifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		316098221D005CF100D50ABB /* configuration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = configuration.json; path = ../../configuration.json; sourceTree = "<group>"; };
 		316098241D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLProximity+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		316098261D00710000D50ABB /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		316098431D00716F00D50ABB /* COBPositionNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBPositionNotifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				3160980E1D0041CA00D50ABB /* Info.plist */,
 				316098181D00453600D50ABB /* GameViewController.swift */,
 				316098241D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift */,
+				316098431D00716F00D50ABB /* COBPositionNotifier.swift */,
 			);
 			path = CallOfBeacons;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			files = (
 				316098191D00453600D50ABB /* GameViewController.swift in Sources */,
 				316098031D0041CA00D50ABB /* AppDelegate.swift in Sources */,
+				316098441D00716F00D50ABB /* COBPositionNotifier.swift in Sources */,
 				316098211D005C4100D50ABB /* COBBeacon.swift in Sources */,
 				3160981D1D0050B700D50ABB /* COBConfiguration.swift in Sources */,
 				316098251D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift in Sources */,
