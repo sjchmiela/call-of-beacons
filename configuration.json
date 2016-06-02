@@ -1,9 +1,7 @@
 {
   "UUID": "08BD93B1-C7A9-40DA-B0C1-6C69FE05E996",
-  "flags": [
-    { "major": 1, "minor": 1 }
-  ],
-  "bases": [
-    { "major": 1, "minor": 2 }
+  "beacons": [
+    { "major": 1, "minor": 1, "behavior": "flag" },
+    { "major": 1, "minor": 2, "behavior": "health" }
   ]
 }
