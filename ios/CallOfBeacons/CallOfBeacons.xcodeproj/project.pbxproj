@@ -12,6 +12,7 @@
 		316098081D0041CA00D50ABB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 316098061D0041CA00D50ABB /* Main.storyboard */; };
 		3160980A1D0041CA00D50ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 316098091D0041CA00D50ABB /* Assets.xcassets */; };
 		3160980D1D0041CA00D50ABB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3160980B1D0041CA00D50ABB /* LaunchScreen.storyboard */; };
+		316098161D00428D00D50ABB /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316098151D00428D00D50ABB /* EstimoteSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		316098091D0041CA00D50ABB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3160980C1D0041CA00D50ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3160980E1D0041CA00D50ABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		316098151D00428D00D50ABB /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				316098161D00428D00D50ABB /* EstimoteSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +42,7 @@
 			isa = PBXGroup;
 			children = (
 				316098011D0041CA00D50ABB /* CallOfBeacons */,
+				316098141D00426D00D50ABB /* Frameworks */,
 				316098001D0041CA00D50ABB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,6 +66,14 @@
 				3160980E1D0041CA00D50ABB /* Info.plist */,
 			);
 			path = CallOfBeacons;
+			sourceTree = "<group>";
+		};
+		316098141D00426D00D50ABB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				316098151D00428D00D50ABB /* EstimoteSDK.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +261,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CallOfBeacons/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.agh.iot.CallOfBeacons;
@@ -260,6 +276,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CallOfBeacons/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.agh.iot.CallOfBeacons;
