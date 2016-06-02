@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Behavior protocol (interface)
 protocol COBBeaconBehavior {
-    func beaconDidChangeProximity(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> COBGamerState
+    /// Mutates gamerState based on the proximity of the beacon
+    func beaconIsInRange(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> COBGamerState
 }

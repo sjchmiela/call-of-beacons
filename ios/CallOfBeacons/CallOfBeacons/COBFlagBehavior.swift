@@ -9,9 +9,10 @@
 import Foundation
 
 class COBFlagBehavior: COBBeaconBehavior {
-    func beaconDidChangeProximity(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> COBGamerState {
-        
+    func beaconIsInRange(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> COBGamerState {
+        // If the gamer is alive
         if gamerState.healthPoints > 0 {
+            // Add to the score points based on the proximity.
             if let proximity = beacon.proximity {
                 switch proximity {
                 case .Immediate:

@@ -8,19 +8,25 @@
 
 import UIKit
 
-class GameViewController: UIViewController, ESTBeaconManagerDelegate {
+class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
+    /// Outlets
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var healthPointsLabel: UILabel!
     @IBOutlet weak var reviveButton: UIButton!
     @IBOutlet weak var killButton: UIButton!
     @IBOutlet weak var instructionsLabel: UILabel!
     
+    /// Beacon Manager
     let beaconManager = ESTBeaconManager()
+    /// Region that the beacon manager ranges
     let beaconRegion = CLBeaconRegion(
         proximityUUID: NSUUID(UUIDString: COBConfiguration.uuid!)!,
         identifier: "ranged region")
+    let notifier = COBPositionNotifier(url: COBConfiguration.putPositionUrl!)
     
+    /// Gamer state represented on screen
     var gamerState = COBGamerState() {
+        // On every gamer state change update UI
         didSet {
             healthPointsLabel?.text = "HP: \(gamerState.healthPoints)"
             scoreLabel?.text = "Score: \(gamerState.score)"
@@ -39,6 +45,7 @@ class GameViewController: UIViewController, ESTBeaconManagerDelegate {
         }
     }
     
+    // MARK: - Object Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.beaconManager.delegate = self
@@ -55,6 +62,7 @@ class GameViewController: UIViewController, ESTBeaconManagerDelegate {
         self.beaconManager.stopRangingBeaconsInRegion(self.beaconRegion)
     }
     
+    // MARK: - Button actions
     
     @IBAction func killTapped(sender: UIButton) {
         gamerState.kill()
@@ -64,16 +72,26 @@ class GameViewController: UIViewController, ESTBeaconManagerDelegate {
         gamerState.revive()
         
     }
+    
+    // MARK: - ESTBeaconManagerDelegate
+    
+    /// Delegate method called when beacon manager detects beacons
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-        let cobBeacons = beacons.map { (clBeacon) -> COBBeacon in
-            let cobBeacon = COBBeacon(beacon: clBeacon)
-            if let behavior = cobBeacon.behavior {
-                gamerState = behavior.beaconDidChangeProximity(cobBeacon, forGamerState: gamerState)
+        // Map the CLBeacons to our COBBeacons
+        let cobBeacons = beacons.map({COBBeacon(beacon: $0)})
+        // For each COBBeacon trigger action
+        for beacon in cobBeacons {
+            if let behavior = beacon.behavior {
+                gamerState = behavior.beaconIsInRange(beacon, forGamerState: gamerState)
             }
-            return cobBeacon
         }
-        COBPositionNotifier.update(cobBeacons)
-        print(cobBeacons)
+        // Update positions on the server
+        notifier.update(cobBeacons)
+        
+        // Print the beacon info to the console
+        for beacon in cobBeacons {
+            print(beacon)
+        }
         print("---")
     }
 

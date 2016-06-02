@@ -3,7 +3,8 @@
   "putPositionUrl": "http://10.22.112.240:1880/beacons/",
   "beacons": [
     { "major": 1, "minor": 1, "behavior": "flag", "name": "Violet" },
-    { "major": 1, "minor": 2, "behavior": "healthPoint", "name": "Blue" }
+    { "major": 1, "minor": 2, "behavior": "healthPoint", "name": "Blue" },
+    { "major": 20428, "minor": 4034, "behavior": "none", "name": "Violet without sticker" }
   ],
   "proximityToScore": {
     "0": 0,

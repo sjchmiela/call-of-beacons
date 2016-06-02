@@ -31,6 +31,7 @@ class COBConfiguration {
     static var healthPoints: [COBBeacon] = {
         return beacons.filter({ $0.behaviorName == "healthPoint" })
     }()
+    /// Amount of points deducted from gamer's score when on revival
     static let revivalPenalty: Int = { return configuration["revivalPenalty"].int ?? 0 }()
     /// Dictionary of proximity -> score
     static let proximityToScore: [CLProximity: Int] = {

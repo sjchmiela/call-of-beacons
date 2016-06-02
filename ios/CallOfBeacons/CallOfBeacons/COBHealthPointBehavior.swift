@@ -9,7 +9,8 @@
 import Foundation
 
 class COBHealthPointBehavior: COBBeaconBehavior {
-    func beaconDidChangeProximity(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> COBGamerState {
+    func beaconIsInRange(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> COBGamerState {
+        // If the health beacon is in immediate proximity the gamer can revive.
         gamerState.canRevive = (beacon.proximity == .Immediate)
         return gamerState
     }

@@ -22,7 +22,7 @@ class COBBeacon: Equatable, CustomStringConvertible {
     var proximity: CLProximity?
     /// toString of the beacon object
     var description: String {
-        return "Beacon \(name ?? "") acting as \(behaviorName ?? "unknown") (\(major?.description ?? "?"):\((minor?.description ?? "?"))) is in proximity \(proximity?.description ?? "unknown")"
+        return "Beacon \(name ?? "")\n\t\(proximity?.description ?? "unknown") to \(behaviorName ?? "unknown")"
     }
     /// Behavior of the beacon
     var behavior: COBBeaconBehavior? {
@@ -76,6 +76,7 @@ extension COBBeacon {
     }
 }
 
+/// Comparison implementation
 func ==(lhs: COBBeacon, rhs: COBBeacon) -> Bool {
     return lhs.major == rhs.major && lhs.minor == rhs.minor
 }

@@ -9,13 +9,33 @@
 import Foundation
 import Alamofire
 
+/// Object notifying server of the beacon positions
 class COBPositionNotifier {
-    static func update(beacons: [COBBeacon]) {
-        let parameters = beacons.reduce([String: AnyObject]()) { (dictionary, beacon) -> [String: AnyObject] in
-            var mutableDictionary = dictionary
-            mutableDictionary["\(beacon.major!):\(beacon.minor!)"] = beacon.proximity?.rawValue
-            return mutableDictionary
+    /// Where the notifier should put the positions
+    var url: String?
+    
+    init(url: String) {
+        self.url = url
+    }
+    
+    /// Send to the server
+    func update(beacons: [COBBeacon]) {
+        if let url = url {
+            Alamofire.request(.PUT, url, parameters: COBPositionNotifier.beaconsToParameters(beacons), encoding: ParameterEncoding.JSON, headers: nil)
         }
-        Alamofire.request(.PUT, COBConfiguration.putPositionUrl!, parameters: parameters, encoding: ParameterEncoding.JSON, headers: nil)
+    }
+    
+    /// Turn array of beacons to parameters sendable through HTTP request
+    static func beaconsToParameters(beacons: [COBBeacon]) -> [String: AnyObject] {
+        let initialDictionary = [String: AnyObject]()
+        return beacons.reduce(initialDictionary) { (dictionary, beacon) -> [String: AnyObject] in
+            if let proximity = beacon.proximity {
+                var mutableDictionary = dictionary
+                mutableDictionary["\(beacon.major!):\(beacon.minor!)"] = proximity.rawValue
+                return mutableDictionary
+            } else {
+                return dictionary
+            }
+        }
     }
 }

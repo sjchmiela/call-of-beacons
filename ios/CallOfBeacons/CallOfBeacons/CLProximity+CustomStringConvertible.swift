@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Extension to the CLProximity for nice string description
 extension CLProximity {
     var description: String {
         switch self {
