@@ -13,37 +13,26 @@ class COBBeacon: Equatable, CustomStringConvertible {
     var minor: Int?
     var name: String?
     var behavior: String?
-    
-    init(major: Int?, minor: Int?, behavior: String?, name: String?) {
-        self.major = major
-        self.minor = minor
-        self.behavior = behavior
-        self.name = name
-    }
+    var proximity: CLProximity?
     
     var description: String {
-        return "Beacon \(name ?? "unknown") acting as \(behavior ?? "unknown") (\(major?.description ?? "?"):\((minor?.description ?? "?")))"
+        return "Beacon \(name ?? "") acting as \(behavior ?? "unknown") (\(major?.description ?? "?"):\((minor?.description ?? "?"))) is in proximity \(proximity?.description ?? "unknown")"
     }
     
-    convenience init(jsonData: JSON) {
-        self.init(
-            major: jsonData["major"].int,
-            minor: jsonData["minor"].int,
-            behavior: jsonData["behavior"].stringValue,
-            name: jsonData["name"].stringValue
-        )
+    init(jsonData: JSON) {
+        self.major = jsonData["major"].int
+        self.minor = jsonData["minor"].int
+        self.behavior = jsonData["behavior"].string
+        self.name = jsonData["name"].string
     }
 
-    convenience init(beacon: CLBeacon) {
-        self.init(
-            major: beacon.major.integerValue,
-            minor: beacon.minor.integerValue,
-            behavior: nil,
-            name: nil
-        )
+    init(beacon: CLBeacon) {
+        self.major = beacon.major.integerValue
+        self.minor = beacon.minor.integerValue
+        self.proximity = beacon.proximity
     }
 }
 
 func ==(lhs: COBBeacon, rhs: COBBeacon) -> Bool {
-    return lhs.major == rhs.major && lhs.minor == lhs.minor
+    return lhs.major == rhs.major && lhs.minor == rhs.minor
 }

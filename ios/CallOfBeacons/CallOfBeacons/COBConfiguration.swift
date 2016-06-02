@@ -9,21 +9,19 @@
 import Foundation
 
 class COBConfiguration {
-    private static let path = NSBundle.mainBundle().pathForResource("beacons", ofType: "json")
+    private static let path = NSBundle.mainBundle().pathForResource("configuration", ofType: "json")
     private static let data = try! NSData(contentsOfFile: path!, options: .DataReadingMappedIfSafe)
     private static let configuration = JSON(data: data)
+
     static let uuid = configuration["UUID"].string
+
     static var beacons: [COBBeacon] {
-        return flags + bases
+        return configuration["beacons"].arrayValue.map({COBBeacon(jsonData: $0)})
     }
     static var flags: [COBBeacon] {
-        return configuration["flags"].array?.map({ (json) -> COBBeacon in
-            return COBBeacon(major: json["major"].int, minor: json["minor"].int, name: "flag")
-        }) ?? []
+        return beacons.filter({ $0.behavior == "flag" })
     }
-    static var bases: [COBBeacon] {
-        return configuration["bases"].array?.map({ (json) -> COBBeacon in
-            return COBBeacon(major: json["major"].int, minor: json["minor"].int, name: "base")
-        }) ?? []
+    static var healthPoints: [COBBeacon] {
+        return beacons.filter({ $0.behavior == "health" })
     }
 }

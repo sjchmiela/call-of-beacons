@@ -16,7 +16,8 @@
 		3160981D1D0050B700D50ABB /* COBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3160981C1D0050B700D50ABB /* COBConfiguration.swift */; };
 		3160981F1D00551500D50ABB /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3160981E1D00551500D50ABB /* SwiftyJSON.swift */; };
 		316098211D005C4100D50ABB /* COBBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098201D005C4100D50ABB /* COBBeacon.swift */; };
-		316098231D005CF100D50ABB /* beacons.json in Resources */ = {isa = PBXBuildFile; fileRef = 316098221D005CF100D50ABB /* beacons.json */; };
+		316098231D005CF100D50ABB /* configuration.json in Resources */ = {isa = PBXBuildFile; fileRef = 316098221D005CF100D50ABB /* configuration.json */; };
+		316098251D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098241D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +33,8 @@
 		3160981C1D0050B700D50ABB /* COBConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBConfiguration.swift; sourceTree = "<group>"; };
 		3160981E1D00551500D50ABB /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = CallOfBeacons/SwiftyJSON.swift; sourceTree = "<group>"; };
 		316098201D005C4100D50ABB /* COBBeacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBBeacon.swift; sourceTree = "<group>"; };
-		316098221D005CF100D50ABB /* beacons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = beacons.json; path = ../../beacons.json; sourceTree = "<group>"; };
+		316098221D005CF100D50ABB /* configuration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = configuration.json; path = ../../configuration.json; sourceTree = "<group>"; };
+		316098241D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLProximity+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +52,7 @@
 		316097F61D0041CA00D50ABB = {
 			isa = PBXGroup;
 			children = (
-				316098221D005CF100D50ABB /* beacons.json */,
+				316098221D005CF100D50ABB /* configuration.json */,
 				316098171D0042ED00D50ABB /* ObjCBridge.h */,
 				316098011D0041CA00D50ABB /* CallOfBeacons */,
 				316098141D00426D00D50ABB /* Frameworks */,
@@ -77,6 +79,7 @@
 				3160980B1D0041CA00D50ABB /* LaunchScreen.storyboard */,
 				3160980E1D0041CA00D50ABB /* Info.plist */,
 				316098181D00453600D50ABB /* GameViewController.swift */,
+				316098241D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift */,
 			);
 			path = CallOfBeacons;
 			sourceTree = "<group>";
@@ -151,7 +154,7 @@
 				3160980D1D0041CA00D50ABB /* LaunchScreen.storyboard in Resources */,
 				3160980A1D0041CA00D50ABB /* Assets.xcassets in Resources */,
 				316098081D0041CA00D50ABB /* Main.storyboard in Resources */,
-				316098231D005CF100D50ABB /* beacons.json in Resources */,
+				316098231D005CF100D50ABB /* configuration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +169,7 @@
 				316098031D0041CA00D50ABB /* AppDelegate.swift in Sources */,
 				316098211D005C4100D50ABB /* COBBeacon.swift in Sources */,
 				3160981D1D0050B700D50ABB /* COBConfiguration.swift in Sources */,
+				316098251D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift in Sources */,
 				3160981F1D00551500D50ABB /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +330,7 @@
 				316098131D0041CA00D50ABB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

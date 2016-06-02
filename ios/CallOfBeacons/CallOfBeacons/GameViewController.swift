@@ -37,22 +37,12 @@ class GameViewController: UIViewController, ESTBeaconManagerDelegate {
     
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         for beacon in beacons {
-            let foundBeacon = COBBeacon(major: beacon.major.integerValue, minor: beacon.minor.integerValue)
-            for knownBeacon in COBConfiguration.beacons {
-                if knownBeacon == foundBeacon {
-                    foundBeacon.name = knownBeacon.name
-                }
-            }
-            
-            switch beacon.proximity {
-            case CLProximity.Far:
-                print("\(foundBeacon) is far")
-            case CLProximity.Immediate:
-                print("\(foundBeacon) is very close")
-            case CLProximity.Near:
-                print("\(foundBeacon) is near")
-            default:
-                print("\(foundBeacon)'s location is unknown")
+            let cobBeacon = COBBeacon(beacon: beacon)
+            if let index = COBConfiguration.beacons.indexOf({$0 == cobBeacon}) {
+                let knownBeacon = COBConfiguration.beacons[index]
+                cobBeacon.behavior = knownBeacon.behavior
+                cobBeacon.name = knownBeacon.name
+                print(cobBeacon)
             }
         }
         print("---")
