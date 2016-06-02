@@ -9,6 +9,9 @@
 #ifndef ObjCBridge_h
 #define ObjCBridge_h
 
+// Objective-C import header
+// https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
+
 #import <EstimoteSDK/EstimoteSDK.h>
 
 #endif /* ObjCBridge_h */

@@ -8,6 +8,9 @@
 
 import UIKit
 
+// AppDelegate – kind of “Main” of the application.
+// It handles all the lifecycle events of the application. Just the boilerplate here.
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

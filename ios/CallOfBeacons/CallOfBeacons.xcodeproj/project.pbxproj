@@ -21,6 +21,10 @@
 		3160983E1D00712400D50ABB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316098311D00710000D50ABB /* Alamofire.framework */; };
 		3160983F1D00712400D50ABB /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 316098311D00710000D50ABB /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		316098441D00716F00D50ABB /* COBPositionNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098431D00716F00D50ABB /* COBPositionNotifier.swift */; };
+		316098471D00AC5500D50ABB /* COBBeaconBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098461D00AC5500D50ABB /* COBBeaconBehavior.swift */; };
+		316098511D00ACFD00D50ABB /* COBHealthPointBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098501D00ACFD00D50ABB /* COBHealthPointBehavior.swift */; };
+		316098531D00AD4E00D50ABB /* COBGamerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098521D00AD4E00D50ABB /* COBGamerState.swift */; };
+		316098551D00AF5600D50ABB /* COBFlagBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098541D00AF5600D50ABB /* COBFlagBehavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +117,10 @@
 		316098241D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLProximity+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		316098261D00710000D50ABB /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		316098431D00716F00D50ABB /* COBPositionNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBPositionNotifier.swift; sourceTree = "<group>"; };
+		316098461D00AC5500D50ABB /* COBBeaconBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBBeaconBehavior.swift; sourceTree = "<group>"; };
+		316098501D00ACFD00D50ABB /* COBHealthPointBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBHealthPointBehavior.swift; sourceTree = "<group>"; };
+		316098521D00AD4E00D50ABB /* COBGamerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBGamerState.swift; sourceTree = "<group>"; };
+		316098541D00AF5600D50ABB /* COBFlagBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBFlagBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +158,10 @@
 		316098011D0041CA00D50ABB /* CallOfBeacons */ = {
 			isa = PBXGroup;
 			children = (
+				3160984E1D00ACDF00D50ABB /* COBBeaconBehaviors */,
 				316098021D0041CA00D50ABB /* AppDelegate.swift */,
 				316098201D005C4100D50ABB /* COBBeacon.swift */,
+				316098521D00AD4E00D50ABB /* COBGamerState.swift */,
 				3160981C1D0050B700D50ABB /* COBConfiguration.swift */,
 				316098061D0041CA00D50ABB /* Main.storyboard */,
 				316098091D0041CA00D50ABB /* Assets.xcassets */,
@@ -188,6 +198,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3160984E1D00ACDF00D50ABB /* COBBeaconBehaviors */ = {
+			isa = PBXGroup;
+			children = (
+				316098461D00AC5500D50ABB /* COBBeaconBehavior.swift */,
+				316098501D00ACFD00D50ABB /* COBHealthPointBehavior.swift */,
+				316098541D00AF5600D50ABB /* COBFlagBehavior.swift */,
+			);
+			name = COBBeaconBehaviors;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -216,6 +236,7 @@
 		316097F71D0041CA00D50ABB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = COB;
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Stanisław Chmiela, Rafał Żelazko";
@@ -320,12 +341,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				316098551D00AF5600D50ABB /* COBFlagBehavior.swift in Sources */,
 				316098191D00453600D50ABB /* GameViewController.swift in Sources */,
 				316098031D0041CA00D50ABB /* AppDelegate.swift in Sources */,
 				316098441D00716F00D50ABB /* COBPositionNotifier.swift in Sources */,
 				316098211D005C4100D50ABB /* COBBeacon.swift in Sources */,
 				3160981D1D0050B700D50ABB /* COBConfiguration.swift in Sources */,
+				316098531D00AD4E00D50ABB /* COBGamerState.swift in Sources */,
 				316098251D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift in Sources */,
+				316098471D00AC5500D50ABB /* COBBeaconBehavior.swift in Sources */,
+				316098511D00ACFD00D50ABB /* COBHealthPointBehavior.swift in Sources */,
 				3160981F1D00551500D50ABB /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,8 +1,15 @@
 {
-  "UUID": "08BD93B1-C7A9-40DA-B0C1-6C69FE05E996",
+  "UUID": "B9407F30-F5F8-466E-AFF9-25556B57FE6D",
   "putPositionUrl": "http://10.22.112.240:1880/beacons/",
   "beacons": [
-    { "major": 1, "minor": 1, "behavior": "flag" },
-    { "major": 1, "minor": 2, "behavior": "health" }
-  ]
+    { "major": 1, "minor": 1, "behavior": "flag", "name": "Violet" },
+    { "major": 1, "minor": 2, "behavior": "healthPoint", "name": "Blue" }
+  ],
+  "proximityToScore": {
+    "0": 0,
+    "1": 10,
+    "2": 5,
+    "3": 2
+  },
+  "revivalPenalty": -10
 }

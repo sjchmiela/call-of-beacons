@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -18,8 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heR-1i-oxl">
-                                <rect key="frame" x="258" y="277" width="84" height="46"/>
+                                <rect key="frame" x="20" y="479" width="179" height="101"/>
                                 <color key="backgroundColor" red="0.96610248089999995" green="0.079876735810000002" blue="0.15522460639999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="101" id="Fk1-8M-UjV"/>
+                                    <constraint firstAttribute="width" constant="179" id="Knf-br-NQk"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="36"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="KILL"/>
@@ -27,16 +32,69 @@
                                     <action selector="killTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d7U-E1-1EN"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFX-Wc-Pxl">
+                                <rect key="frame" x="20" y="28" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5X-xc-J6L">
+                                <rect key="frame" x="538" y="28" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sp-aX-reo">
+                                <rect key="frame" x="401" y="479" width="179" height="101"/>
+                                <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="29"/>
+                                <state key="normal" title="REVIVE"/>
+                                <connections>
+                                    <action selector="reviveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9g-da-DbB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run to the nearest health point!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOE-MV-ZRE">
+                                <rect key="frame" x="118" y="283.5" width="364.5" height="32.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="g5X-xc-J6L" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ah-oL-XHg"/>
+                            <constraint firstItem="2Sp-aX-reo" firstAttribute="width" secondItem="heR-1i-oxl" secondAttribute="width" id="5oQ-Ip-LCz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Sp-aX-reo" secondAttribute="trailing" id="89i-QB-8Di"/>
+                            <constraint firstItem="wOE-MV-ZRE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9ar-UH-eJS"/>
+                            <constraint firstItem="wOE-MV-ZRE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Kmh-0c-lDJ"/>
                             <constraint firstItem="heR-1i-oxl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="P5V-UP-hdC"/>
+                            <constraint firstItem="g5X-xc-J6L" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="VNr-MK-IFP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="heR-1i-oxl" secondAttribute="bottom" constant="20" id="bN6-eK-yYV"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2Sp-aX-reo" secondAttribute="bottom" constant="20" id="jJl-L4-hxu"/>
+                            <constraint firstItem="bFX-Wc-Pxl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kwr-v4-AbH"/>
+                            <constraint firstItem="bFX-Wc-Pxl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="lX3-by-hOA"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="heR-1i-oxl" secondAttribute="leading" id="sTG-VS-u8L"/>
+                            <constraint firstItem="2Sp-aX-reo" firstAttribute="top" secondItem="heR-1i-oxl" secondAttribute="top" id="tqT-cj-UsW"/>
                             <constraint firstItem="heR-1i-oxl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vZV-qW-HOz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="P5V-UP-hdC"/>
+                                <exclude reference="vZV-qW-HOz"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="healthPointsLabel" destination="bFX-Wc-Pxl" id="wNk-8w-oGq"/>
+                        <outlet property="instructionsLabel" destination="wOE-MV-ZRE" id="gej-4D-7Je"/>
+                        <outlet property="killButton" destination="heR-1i-oxl" id="Ipx-kf-3yK"/>
+                        <outlet property="reviveButton" destination="2Sp-aX-reo" id="8eX-aw-MuG"/>
+                        <outlet property="scoreLabel" destination="g5X-xc-J6L" id="L3W-rs-6Dl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="280" y="225"/>
         </scene>
     </scenes>
 </document>
