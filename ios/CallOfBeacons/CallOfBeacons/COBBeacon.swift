@@ -22,7 +22,7 @@ class COBBeacon: Equatable, CustomStringConvertible {
     }
     
     var description: String {
-        return "Beacon \(name) acting as \(behavior) (\((major ?? 0)!):\((minor ?? 0)!))"
+        return "Beacon \(name ?? "unknown") acting as \(behavior ?? "unknown") (\(major?.description ?? "?"):\((minor?.description ?? "?")))"
     }
     
     convenience init(jsonData: JSON) {
@@ -35,7 +35,12 @@ class COBBeacon: Equatable, CustomStringConvertible {
     }
 
     convenience init(beacon: CLBeacon) {
-        self.init(major: beacon.major.integerValue, minor: beacon.minor.integerValue, behavior: nil, name: nil)
+        self.init(
+            major: beacon.major.integerValue,
+            minor: beacon.minor.integerValue,
+            behavior: nil,
+            name: nil
+        )
     }
 }
 
