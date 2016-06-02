@@ -1,6 +1,5 @@
-'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app';
 
-var React = require('react'),
-    App = require('./app');
-
-React.render(<App />, document.body);
+ReactDOM.render(<App />, document.getElementById('root'));
