@@ -24,6 +24,7 @@
 		3160980C1D0041CA00D50ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3160980E1D0041CA00D50ABB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		316098151D00428D00D50ABB /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
+		316098171D0042ED00D50ABB /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObjCBridge.h; path = CallOfBeacons/ObjCBridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +42,7 @@
 		316097F61D0041CA00D50ABB = {
 			isa = PBXGroup;
 			children = (
+				316098171D0042ED00D50ABB /* ObjCBridge.h */,
 				316098011D0041CA00D50ABB /* CallOfBeacons */,
 				316098141D00426D00D50ABB /* Frameworks */,
 				316098001D0041CA00D50ABB /* Products */,
@@ -269,6 +271,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.agh.iot.CallOfBeacons;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 			};
 			name = Debug;
 		};
@@ -284,6 +287,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.edu.agh.iot.CallOfBeacons;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
 			};
 			name = Release;
 		};
