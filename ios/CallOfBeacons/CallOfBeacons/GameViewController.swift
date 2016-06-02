@@ -36,15 +36,17 @@ class GameViewController: UIViewController, ESTBeaconManagerDelegate {
     }
     
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-        for beacon in beacons {
-            let cobBeacon = COBBeacon(beacon: beacon)
+        let cobBeacons = beacons.map { (clBeacon) -> COBBeacon in
+            let cobBeacon = COBBeacon(beacon: clBeacon)
             if let index = COBConfiguration.beacons.indexOf({$0 == cobBeacon}) {
                 let knownBeacon = COBConfiguration.beacons[index]
                 cobBeacon.behavior = knownBeacon.behavior
                 cobBeacon.name = knownBeacon.name
-                print(cobBeacon)
             }
+            return cobBeacon
         }
+        COBPositionNotifier.update(cobBeacons)
+        print(cobBeacons)
         print("---")
     }
 
