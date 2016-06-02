@@ -14,6 +14,7 @@ class COBConfiguration {
     private static let configuration = JSON(data: data)
 
     static let uuid = configuration["UUID"].string
+    static let putPositionUrl = configuration["putPositionUrl"].string
 
     static var beacons: [COBBeacon] {
         return configuration["beacons"].arrayValue.map({COBBeacon(jsonData: $0)})
