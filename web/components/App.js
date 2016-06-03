@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './app.scss';
 
 export default class App extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div class="App">
+      <div className="App">
         <h1>Hello, world.</h1>
       </div>
     );
