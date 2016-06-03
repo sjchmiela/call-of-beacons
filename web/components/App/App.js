@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './app.scss';
+import Header from './Header/Header';
+import './App.scss';
 
 export default class App extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <h1>Hello, world.</h1>
       </div>
     );
