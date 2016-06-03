@@ -5,10 +5,10 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './scripts/index'
+    './components/index'
   ],
   output: {
-    path: __dirname + '/scripts/',
+    path: __dirname + '/components/',
     filename: 'bundle.js',
     publicPath: '/scripts/'
   },
@@ -22,6 +22,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, loaders: ['react-hot', 'jsx?harmony', 'babel-loader'], exclude: /node_modules/ },
+      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
     ]
   }
 };
