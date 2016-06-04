@@ -52,6 +52,10 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     
     // MARK: - UI
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     private func updateUserInterface() {
         healthPointsLabel?.text = "HP: \(gamerState.healthPoints)"
         scoreLabel?.text = "Score: \(gamerState.score)"
@@ -101,5 +105,4 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         }
         print("---")
     }
-
 }
