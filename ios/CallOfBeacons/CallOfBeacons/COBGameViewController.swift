@@ -25,7 +25,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     let notifier = COBPositionNotifier(url: COBConfiguration.putPositionUrl!)
     
     /// Gamer state represented on screen
-    var gamerState = COBGamerState() {
+    var gamerState: COBGamerState! {
         // On every gamer state change update UI
         didSet {
             self.updateUserInterface()
