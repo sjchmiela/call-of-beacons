@@ -15,8 +15,6 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var hitButton: UIButton!
     @IBOutlet weak var instructionsLabel: UILabel!
-    @IBOutlet weak var backgroundView: UIView!
-    var shadowAdded = false
     
     /// Beacon Manager
     let beaconManager = ESTBeaconManager()
