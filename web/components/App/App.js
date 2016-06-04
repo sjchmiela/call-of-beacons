@@ -18,17 +18,14 @@ export default class App extends Component {
   }
 
   _onOpen() {
-    console.error('Websocket connection is open.');
     this.setState({ error: false });
   }
 
   _onClose() {
-    console.error('Websocket connection is closed.');
     this.setState({ error: true });
   }
 
   _onError() {
-    console.error('Websocket connection encountered an error.');
     this.setState({ error: true });
   }
 
