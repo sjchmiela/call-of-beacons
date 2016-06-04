@@ -10,6 +10,7 @@ import UIKit
 
 class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     /// Outlets
+    @IBOutlet weak var nickLabel: UILabel!
     @IBOutlet weak var healthPointsButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var killButton: UIButton!
@@ -69,6 +70,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     }
     
     private func updateUserInterface() {
+        nickLabel?.text = gamerState.nick.uppercaseString
         healthPointsButton?.setTitle("HP: \(gamerState.healthPoints)", forState: UIControlState.Normal)
         healthPointsButton?.enabled = gamerState.canRevive
         
