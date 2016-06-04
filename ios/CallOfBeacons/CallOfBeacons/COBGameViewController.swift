@@ -59,16 +59,16 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     private func updateUserInterface() {
         healthPointsLabel?.text = "HP: \(gamerState.healthPoints)"
         scoreLabel?.text = "Score: \(gamerState.score)"
-        reviveButton.hidden = !gamerState.canRevive
-        killButton.hidden = gamerState.healthPoints == 0
+        reviveButton?.hidden = !gamerState.canRevive
+        killButton?.hidden = gamerState.healthPoints == 0
         
         if gamerState.healthPoints > 0 {
-            instructionsLabel.text = "Grab the flag!"
+            instructionsLabel?.text = "Grab the flag!"
         } else {
             if gamerState.canRevive {
-                instructionsLabel.text = "Tap the revive button to revive."
+                instructionsLabel?.text = "Tap the revive button to revive."
             } else {
-                instructionsLabel.text = "Run to the nearest health point!"
+                instructionsLabel?.text = "Run to the nearest health point!"
             }
         }
     }
