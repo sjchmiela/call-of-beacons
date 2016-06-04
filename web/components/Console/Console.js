@@ -39,11 +39,14 @@ export default class Console extends Component {
 
   render() {
     return (
-      <Block className="Console">
-        <div className="Console-content">
-          {this._renderMessages(this.props.messages)}
-        </div>
-      </Block>
+      <div className="Console">
+        <div className="Console-header"><h1>Console</h1></div>
+        <Block className="Console">
+          <div className="Console-content">
+            {this._renderMessages(this.props.messages)}
+          </div>
+        </Block>
+      </div>
     );
   }
 }
