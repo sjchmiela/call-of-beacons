@@ -33,7 +33,11 @@ class COBBeaconView: UIView {
     }
     
     convenience init(center: CGPoint) {
-        self.init(frame: CGRect(x: center.x - 24.5, y: center.y - 16.5, width: 49, height: 33))
+        self.init(frame: CGRect(x: center.x - 17, y: center.y - 24, width: 34, height: 48))
+    }
+    
+    func pulse() {
+        layer.insertSublayer(LFTPulseAnimation(repeatCount: 1, radius: 40, position: bounds.center), below: shapeLayer)
     }
     
     private func shapeLayerInit() {
@@ -41,7 +45,7 @@ class COBBeaconView: UIView {
         shapeLayer.path = drawing.CGPath
         shapeLayer.fillColor = UIColor.whiteColor().CGColor
         shapeLayer.strokeColor = UIColor.blackColor().CGColor
-        shapeLayer.lineWidth = 1.0
+        shapeLayer.lineWidth = 0.5
         shapeLayer.position = CGPoint(x: 0, y: 0)
         layer.addSublayer(shapeLayer)
     }

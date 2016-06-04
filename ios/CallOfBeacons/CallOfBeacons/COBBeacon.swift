@@ -41,6 +41,10 @@ class COBBeacon: Equatable, CustomStringConvertible, Hashable {
         return nil
     }
     
+    var shouldPulse: Bool {
+        return behaviorName == "flag"
+    }
+    
     /// Initialize out of JSON
     init(jsonData: JSON) {
         self.major = jsonData["major"].int

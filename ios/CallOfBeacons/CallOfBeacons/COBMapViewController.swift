@@ -63,8 +63,10 @@ class COBMapViewController: UIViewController {
                         view.hidden = false
                         view.layer.opacity = 1
                         view.frame.center = pointFor(beaconAngle, originatingFrom: origin, withRadius: CGFloat(proximity.rawValue) * proximityRadiusStep)
+                        if beacon.shouldPulse {
+                            view.pulse()
+                        }
                     }
-                    print(view.frame)
                 }
                 beaconAngle += angleStep
             }

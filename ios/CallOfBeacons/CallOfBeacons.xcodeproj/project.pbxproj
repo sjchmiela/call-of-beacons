@@ -14,6 +14,7 @@
 		313085151D034119008D834A /* COBBeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313085141D034119008D834A /* COBBeaconView.swift */; };
 		313085171D0346E8008D834A /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313085161D0346E8008D834A /* UIColor+HexString.swift */; };
 		313085191D036D0A008D834A /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313085181D036D0A008D834A /* CGRect+Center.swift */; };
+		3139DE041D0380160075C041 /* LFTPulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3139DE031D0380160075C041 /* LFTPulseAnimation.swift */; };
 		316098031D0041CA00D50ABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098021D0041CA00D50ABB /* AppDelegate.swift */; };
 		316098081D0041CA00D50ABB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 316098061D0041CA00D50ABB /* Main.storyboard */; };
 		3160980A1D0041CA00D50ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 316098091D0041CA00D50ABB /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		313085141D034119008D834A /* COBBeaconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBBeaconView.swift; sourceTree = "<group>"; };
 		313085161D0346E8008D834A /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
 		313085181D036D0A008D834A /* CGRect+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
+		3139DE031D0380160075C041 /* LFTPulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFTPulseAnimation.swift; sourceTree = "<group>"; };
 		316097FF1D0041CA00D50ABB /* CallOfBeacons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallOfBeacons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		316098021D0041CA00D50ABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		316098071D0041CA00D50ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		316098141D00426D00D50ABB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3139DE031D0380160075C041 /* LFTPulseAnimation.swift */,
 				3160981E1D00551500D50ABB /* SwiftyJSON.swift */,
 				316098261D00710000D50ABB /* Alamofire.xcodeproj */,
 				316098151D00428D00D50ABB /* EstimoteSDK.framework */,
@@ -401,6 +404,7 @@
 				316098031D0041CA00D50ABB /* AppDelegate.swift in Sources */,
 				313084FF1D02EBFD008D834A /* COBView.swift in Sources */,
 				313085151D034119008D834A /* COBBeaconView.swift in Sources */,
+				3139DE041D0380160075C041 /* LFTPulseAnimation.swift in Sources */,
 				316098441D00716F00D50ABB /* COBPositionNotifier.swift in Sources */,
 				316098211D005C4100D50ABB /* COBBeacon.swift in Sources */,
 				3160981D1D0050B700D50ABB /* COBConfiguration.swift in Sources */,
