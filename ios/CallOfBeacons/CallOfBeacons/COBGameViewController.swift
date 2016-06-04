@@ -13,8 +13,10 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBOutlet weak var nickLabel: UILabel!
     @IBOutlet weak var healthPointsButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var killButton: UIButton!
+    @IBOutlet weak var hitButton: UIButton!
     @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var backgroundView: UIView!
+    var shadowAdded = false
     
     /// Beacon Manager
     let beaconManager = ESTBeaconManager()
@@ -48,8 +50,6 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         super.viewDidLoad()
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,8 +59,8 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     }
     
     override func viewDidDisappear(animated: Bool) {
-        self.viewDidDisappear(animated)
         self.beaconManager.stopRangingBeaconsInRegion(self.beaconRegion)
+        super.viewDidDisappear(animated)
     }
     
     // MARK: - UI
@@ -71,6 +71,8 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     
     private func updateUserInterface() {
         nickLabel?.text = gamerState.nick.uppercaseString
+        scoreLabel?.text = "Score: \(gamerState.score)"
+        
         healthPointsButton?.setTitle("HP: \(gamerState.healthPoints)", forState: UIControlState.Normal)
         healthPointsButton?.enabled = gamerState.canRevive
         
@@ -82,8 +84,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
             healthPointsButton?.titleLabel?.layer.removeAllAnimations()
         }
         
-        scoreLabel?.text = "Score: \(gamerState.score)"
-        killButton?.hidden = gamerState.healthPoints == 0
+        hitButton?.hidden = gamerState.healthPoints == 0
         
         if gamerState.healthPoints > 0 {
             instructionsLabel?.text = "Grab the flag!"
@@ -98,13 +99,18 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     
     // MARK: - Button actions
     
-    @IBAction func killTapped(sender: UIButton) {
+    @IBAction func hitButtonTapped(sender: UIButton) {
         gamerState.kill()
+        updateUserInterface()
     }
     
     @IBAction func reviveTapped(sender: UIButton) {
         gamerState.revive()
-        
+        updateUserInterface()
+    }
+    
+    @IBAction func resetButtonTapped(sender: UIButton) {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - ESTBeaconManagerDelegate
