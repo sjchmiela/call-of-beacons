@@ -17,9 +17,8 @@ class COBStartViewController: UIViewController, UITextFieldDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "GameStart" {
-            if let gameVC = segue.destinationViewController as? COBGameViewController {
-                gameVC.gamerState = COBGamerState(nick: nickTextField.text!)
-            }
+            let gameVC = segue.destinationViewController as! COBGameViewController
+            gameVC.gamerState = COBGamerState(nick: nickTextField.text!)
         }
     }
 
