@@ -10,11 +10,17 @@ import Foundation
 
 /// Gamer State object – holds health points and score
 class COBGamerState {
+    /// Nick of the gamer
+    var nick: String
     /// Health points of the gamer
     var healthPoints: Int = 100
     /// Score of the gamer
     var score: Int = 0
     var canRevive: Bool = false
+    
+    init(nick: String) {
+        self.nick = nick
+    }
     
     /// Called when the gamer is revived. Every revival deducts points.
     func revive() {
