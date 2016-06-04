@@ -1,0 +1,24 @@
+.Console {
+  display: flex;
+  flex: 1;
+  padding: 0;
+
+  &-content {
+    width: 100%;
+    overflow-y: scroll;
+  }
+
+  &-message {
+    width: 100%;
+    display: block;
+    padding: 0.5em;
+    border-bottom: 1px solid #3F525B;
+    &-timestamp {
+      font-size: 0.618em;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
