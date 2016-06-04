@@ -32,6 +32,10 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         }
     }
     
+    var mapViewController: COBMapViewController? {
+        return childViewControllers.filter({ $0 is COBMapViewController }).first as? COBMapViewController
+    }
+    
     let pulseAnimation: CABasicAnimation = {
         let pulseAnimation = CABasicAnimation(keyPath: "opacity")
         pulseAnimation.duration = 1
@@ -125,6 +129,8 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         }
         // Update positions on the server
         notifier.update(cobBeacons)
+        
+        mapViewController?.beacons = cobBeacons
         
         // Print the beacon info to the console
         for beacon in cobBeacons {

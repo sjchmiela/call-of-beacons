@@ -705,44 +705,55 @@
             </objects>
             <point key="canvasLocation" x="-364" y="571"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="4u7-IY-oAx">
             <objects>
-                <viewController id="GQp-ln-PHq" sceneMemberID="viewController">
+                <viewController id="GQp-ln-PHq" customClass="COBMapViewController" customModule="CallOfBeacons" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rJy-b0-Jpj"/>
+                        <viewControllerLayoutGuide type="bottom" id="BXv-QN-sIx"/>
+                    </layoutGuides>
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Gb4-tG-pCH">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="228"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-PI-Tkk" customClass="COBGridView" customModule="CallOfBeacons" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="560" height="228"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="△" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnE-nU-GGV">
-                                        <rect key="frame" x="0.0" y="187" width="560" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" red="0.054901960780000002" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="BnE-nU-GGV" secondAttribute="trailing" id="abc-l4-svY"/>
-                                    <constraint firstItem="BnE-nU-GGV" firstAttribute="leading" secondItem="LoW-PI-Tkk" secondAttribute="leading" id="dYb-8P-212"/>
-                                    <constraint firstAttribute="bottom" secondItem="BnE-nU-GGV" secondAttribute="bottom" id="q1e-oc-pN5"/>
-                                </constraints>
                             </view>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUN-NL-g3p">
+                                <rect key="frame" x="20" y="20" width="520" height="167"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="△" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnE-nU-GGV">
+                                <rect key="frame" x="20" y="187" width="520" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.054901960784313725" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="yUN-NL-g3p" firstAttribute="top" secondItem="Gb4-tG-pCH" secondAttribute="topMargin" constant="20" id="3EG-sx-MqG"/>
+                            <constraint firstItem="BnE-nU-GGV" firstAttribute="top" secondItem="yUN-NL-g3p" secondAttribute="bottom" id="8PY-hG-eO6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yUN-NL-g3p" secondAttribute="trailing" id="9I8-pv-5OP"/>
+                            <constraint firstItem="BnE-nU-GGV" firstAttribute="leading" secondItem="Gb4-tG-pCH" secondAttribute="leadingMargin" id="E7C-2r-tUV"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="BnE-nU-GGV" secondAttribute="bottom" id="JF7-HP-bAr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LoW-PI-Tkk" secondAttribute="trailing" constant="-20" id="MVb-Kx-sQg"/>
                             <constraint firstItem="LoW-PI-Tkk" firstAttribute="leading" secondItem="Gb4-tG-pCH" secondAttribute="leadingMargin" constant="-20" id="WMw-49-FkM"/>
+                            <constraint firstItem="yUN-NL-g3p" firstAttribute="leading" secondItem="Gb4-tG-pCH" secondAttribute="leadingMargin" id="dcU-oy-9c1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BnE-nU-GGV" secondAttribute="trailing" id="fv7-aS-GVn"/>
                             <constraint firstAttribute="topMargin" secondItem="LoW-PI-Tkk" secondAttribute="top" id="gpY-e8-9Ta"/>
                             <constraint firstAttribute="bottomMargin" secondItem="LoW-PI-Tkk" secondAttribute="bottom" id="v52-ts-yLd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="beaconsView" destination="yUN-NL-g3p" id="56r-BK-HPD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVc-7x-Hj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="1183.5"/>
+            <point key="canvasLocation" x="390" y="1207"/>
         </scene>
     </scenes>
     <resources>

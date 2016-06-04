@@ -9,7 +9,7 @@
 import Foundation
 
 /// Beacon model with all the information we need
-class COBBeacon: Equatable, CustomStringConvertible {
+class COBBeacon: Equatable, CustomStringConvertible, Hashable {
     /// Major of the beacon
     var major: Int?
     /// Minor of the beacon
@@ -20,6 +20,8 @@ class COBBeacon: Equatable, CustomStringConvertible {
     var behaviorName: String?
     /// Proximity of the beacon to the gamer
     var proximity: CLProximity?
+    /// Color of the beacon
+    var color: String?
     /// toString of the beacon object
     var description: String {
         return "Beacon \(name ?? "")\n\t\(proximity?.description ?? "unknown") to \(behaviorName ?? "unknown")"
@@ -45,6 +47,7 @@ class COBBeacon: Equatable, CustomStringConvertible {
         self.minor = jsonData["minor"].int
         self.behaviorName = jsonData["behavior"].string
         self.name = jsonData["name"].string
+        self.color = jsonData["color"].string
     }
 
     /// Initialize out of a beacon of another type. Merges the beacon with any known beacon found.
@@ -56,7 +59,12 @@ class COBBeacon: Equatable, CustomStringConvertible {
         if let knownBeacon = COBBeacon.beaconWith(beacon.major.integerValue, minor: beacon.minor.integerValue) {
             self.name = knownBeacon.name
             self.behaviorName = knownBeacon.behaviorName
+            self.color = knownBeacon.color
         }
+    }
+    
+    var hashValue: Int {
+        return 65535 * major! + minor!
     }
 }
 
