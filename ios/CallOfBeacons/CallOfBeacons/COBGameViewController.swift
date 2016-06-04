@@ -28,20 +28,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     var gamerState = COBGamerState() {
         // On every gamer state change update UI
         didSet {
-            healthPointsLabel?.text = "HP: \(gamerState.healthPoints)"
-            scoreLabel?.text = "Score: \(gamerState.score)"
-            reviveButton.hidden = !gamerState.canRevive
-            killButton.hidden = gamerState.healthPoints == 0
-            
-            if gamerState.healthPoints > 0 {
-                instructionsLabel.text = "Grab the flag!"
-            } else {
-                if gamerState.canRevive {
-                    instructionsLabel.text = "Tap the revive button to revive."
-                } else {
-                    instructionsLabel.text = "Run to the nearest health point!"
-                }
-            }
+            self.updateUserInterface()
         }
     }
     
@@ -55,11 +42,31 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.beaconManager.startRangingBeaconsInRegion(self.beaconRegion)
+        self.updateUserInterface()
     }
     
     override func viewDidDisappear(animated: Bool) {
         self.viewDidDisappear(animated)
         self.beaconManager.stopRangingBeaconsInRegion(self.beaconRegion)
+    }
+    
+    // MARK: - UI
+    
+    private func updateUserInterface() {
+        healthPointsLabel?.text = "HP: \(gamerState.healthPoints)"
+        scoreLabel?.text = "Score: \(gamerState.score)"
+        reviveButton.hidden = !gamerState.canRevive
+        killButton.hidden = gamerState.healthPoints == 0
+        
+        if gamerState.healthPoints > 0 {
+            instructionsLabel.text = "Grab the flag!"
+        } else {
+            if gamerState.canRevive {
+                instructionsLabel.text = "Tap the revive button to revive."
+            } else {
+                instructionsLabel.text = "Run to the nearest health point!"
+            }
+        }
     }
     
     // MARK: - Button actions
