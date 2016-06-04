@@ -9,14 +9,23 @@
 import Foundation
 
 /// Gamer State object – holds health points and score
-class COBGamerState {
+class COBGamerState: CustomStringConvertible {
     /// Nick of the gamer
     var nick: String
     /// Health points of the gamer
     var healthPoints: Int = 100
     /// Score of the gamer
     var score: Int = 0
-    var canRevive: Bool = false
+    var canRevive: Bool = false {
+        didSet {
+            if canRevive == true && healthPoints == 100 {
+                canRevive = false
+            }
+        }
+    }
+    var description: String {
+        return "State for gamer \(nick)\n\tHP: \(healthPoints)\n\tScore: \(score)"
+    }
     
     init(nick: String) {
         self.nick = nick

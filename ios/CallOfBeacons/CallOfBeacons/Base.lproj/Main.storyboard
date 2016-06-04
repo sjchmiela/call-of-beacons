@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -33,15 +32,6 @@
                                 </state>
                                 <connections>
                                     <action selector="killTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d7U-E1-1EN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sp-aX-reo">
-                                <rect key="frame" x="401" y="479" width="179" height="101"/>
-                                <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="32"/>
-                                <state key="normal" title="REVIVE"/>
-                                <connections>
-                                    <action selector="reviveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E9g-da-DbB"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F64-cd-ofJ" userLabel="Spacer">
@@ -140,29 +130,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFM-Wf-H1l" customClass="COBView" customModule="CallOfBeacons" customModuleProvider="target">
                                 <rect key="frame" x="316" y="40" width="264" height="44"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP: 100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFX-Wc-Pxl">
-                                        <rect key="frame" x="44" y="8" width="212" height="28"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOh-Mj-JnR">
+                                        <rect key="frame" x="8" y="8" width="248" height="28"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="textColor" red="0.52549019607843139" green="0.60392156862745094" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hp" translatesAutoresizingMaskIntoConstraints="NO" id="dkK-et-X5b">
-                                        <rect key="frame" x="8" y="8" width="28" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="dkK-et-X5b" secondAttribute="height" multiplier="1:1" id="wlh-Jl-uqX"/>
-                                        </constraints>
-                                    </imageView>
+                                        <state key="normal" title="HP: 100">
+                                            <color key="titleColor" red="0.52549019610000003" green="0.60392156860000001" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="reviveTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tdY-de-RVS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.16078431369999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="dkK-et-X5b" secondAttribute="bottom" constant="8" id="3Vi-Ni-rKj"/>
-                                    <constraint firstItem="dkK-et-X5b" firstAttribute="leading" secondItem="fFM-Wf-H1l" secondAttribute="leading" constant="8" id="4CI-NZ-ffp"/>
-                                    <constraint firstItem="bFX-Wc-Pxl" firstAttribute="leading" secondItem="fFM-Wf-H1l" secondAttribute="leadingMargin" id="5Zs-pV-LLy"/>
-                                    <constraint firstItem="bFX-Wc-Pxl" firstAttribute="trailing" secondItem="fFM-Wf-H1l" secondAttribute="trailingMargin" id="DCR-qa-4s8"/>
-                                    <constraint firstItem="bFX-Wc-Pxl" firstAttribute="bottom" secondItem="fFM-Wf-H1l" secondAttribute="bottomMargin" id="ZK6-Ux-Cdf"/>
-                                    <constraint firstItem="dkK-et-X5b" firstAttribute="top" secondItem="fFM-Wf-H1l" secondAttribute="top" constant="8" id="aXv-Uz-dpp"/>
-                                    <constraint firstItem="bFX-Wc-Pxl" firstAttribute="top" secondItem="fFM-Wf-H1l" secondAttribute="topMargin" id="fke-uZ-Q9k"/>
-                                    <constraint firstItem="bFX-Wc-Pxl" firstAttribute="leading" secondItem="dkK-et-X5b" secondAttribute="trailing" constant="8" symbolic="YES" id="nBm-0P-VLm"/>
+                                    <constraint firstItem="FOh-Mj-JnR" firstAttribute="leading" secondItem="fFM-Wf-H1l" secondAttribute="leading" constant="8" id="68t-8P-kfj"/>
+                                    <constraint firstAttribute="trailing" secondItem="FOh-Mj-JnR" secondAttribute="trailing" constant="8" id="6u0-VK-KNL"/>
+                                    <constraint firstItem="FOh-Mj-JnR" firstAttribute="top" secondItem="fFM-Wf-H1l" secondAttribute="top" constant="8" id="Ce8-H2-oiq"/>
+                                    <constraint firstAttribute="bottom" secondItem="FOh-Mj-JnR" secondAttribute="bottom" constant="8" id="VUU-Ih-vGq"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -172,11 +156,6 @@
                                         <color key="value" red="0.2470588235" green="0.32156862749999998" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="5Zs-pV-LLy"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHR-KX-of0" customClass="COBView" customModule="CallOfBeacons" customModuleProvider="target">
                                 <rect key="frame" x="572" y="32" width="16" height="16"/>
@@ -238,10 +217,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4I-cf-oHj" customClass="COBView" customModule="CallOfBeacons" customModuleProvider="target">
-                                <rect key="frame" x="20" y="141" width="560" height="44"/>
+                                <rect key="frame" x="20" y="141" width="560" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run to the nearest health point!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOE-MV-ZRE">
-                                        <rect key="frame" x="8" y="8" width="544" height="28"/>
+                                        <rect key="frame" x="8" y="8" width="544" height="48"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" red="0.52549019610000003" green="0.60392156860000001" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -249,7 +228,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.16078431369999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="3eu-TL-8UN"/>
+                                    <constraint firstAttribute="height" constant="64" id="3eu-TL-8UN"/>
                                     <constraint firstItem="wOE-MV-ZRE" firstAttribute="top" secondItem="u4I-cf-oHj" secondAttribute="topMargin" id="UuZ-VQ-vGs"/>
                                     <constraint firstItem="wOE-MV-ZRE" firstAttribute="leading" secondItem="u4I-cf-oHj" secondAttribute="leadingMargin" id="WHR-Gj-YGj"/>
                                     <constraint firstItem="wOE-MV-ZRE" firstAttribute="trailing" secondItem="u4I-cf-oHj" secondAttribute="trailingMargin" id="eQZ-v7-bta"/>
@@ -280,7 +259,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faw-Od-fEN" customClass="COBView" customModule="CallOfBeacons" customModuleProvider="target">
-                                <rect key="frame" x="12" y="177" width="16" height="16"/>
+                                <rect key="frame" x="12" y="197" width="16" height="16"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="kLX-Rh-TFY"/>
@@ -296,7 +275,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLJ-lc-XYG" customClass="COBView" customModule="CallOfBeacons" customModuleProvider="target">
-                                <rect key="frame" x="572" y="177" width="16" height="16"/>
+                                <rect key="frame" x="572" y="197" width="16" height="16"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -332,8 +311,6 @@
                             <constraint firstItem="iry-ad-1Ii" firstAttribute="leading" secondItem="d0Q-No-sfC" secondAttribute="trailing" constant="-8" id="3r6-nF-U2h"/>
                             <constraint firstItem="u4I-cf-oHj" firstAttribute="top" secondItem="glK-ko-2n6" secondAttribute="bottom" constant="-8" id="42m-x1-Ba4"/>
                             <constraint firstItem="Msh-Cv-QlU" firstAttribute="top" secondItem="9OB-wu-0rb" secondAttribute="top" id="4gV-Dl-9Ul"/>
-                            <constraint firstItem="2Sp-aX-reo" firstAttribute="width" secondItem="heR-1i-oxl" secondAttribute="width" id="5oQ-Ip-LCz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2Sp-aX-reo" secondAttribute="trailing" id="89i-QB-8Di"/>
                             <constraint firstItem="d0Q-No-sfC" firstAttribute="leading" secondItem="z1p-a7-H8k" secondAttribute="trailing" constant="-8" id="8Ua-Ua-LFR"/>
                             <constraint firstItem="dLJ-lc-XYG" firstAttribute="top" secondItem="u4I-cf-oHj" secondAttribute="bottom" constant="-8" id="9kQ-fY-wP8"/>
                             <constraint firstItem="W5z-JG-0it" firstAttribute="bottom" secondItem="UOm-NH-M50" secondAttribute="bottom" id="9n9-PX-w0g"/>
@@ -366,7 +343,6 @@
                             <constraint firstItem="Msh-Cv-QlU" firstAttribute="leading" secondItem="fFM-Wf-H1l" secondAttribute="trailing" constant="-8" id="faH-GL-0vj"/>
                             <constraint firstItem="UOm-NH-M50" firstAttribute="top" secondItem="d0Q-No-sfC" secondAttribute="bottom" constant="-8" id="gXQ-yZ-bHM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="u4I-cf-oHj" secondAttribute="trailing" id="hks-d5-lQu"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2Sp-aX-reo" secondAttribute="bottom" constant="20" id="jJl-L4-hxu"/>
                             <constraint firstItem="ZHR-KX-of0" firstAttribute="leading" secondItem="Msh-Cv-QlU" secondAttribute="leading" id="lhQ-b7-JAa"/>
                             <constraint firstItem="iry-ad-1Ii" firstAttribute="leading" secondItem="W5z-JG-0it" secondAttribute="leading" id="mLu-nC-iQC"/>
                             <constraint firstItem="iry-ad-1Ii" firstAttribute="trailing" secondItem="W5z-JG-0it" secondAttribute="trailing" id="ny8-na-rG9"/>
@@ -377,7 +353,6 @@
                             <constraint firstItem="9OB-wu-0rb" firstAttribute="top" secondItem="fFM-Wf-H1l" secondAttribute="bottom" constant="-8" id="sDe-5R-O2E"/>
                             <constraint firstAttribute="leadingMargin" secondItem="heR-1i-oxl" secondAttribute="leading" id="sTG-VS-u8L"/>
                             <constraint firstItem="d0Q-No-sfC" firstAttribute="top" secondItem="z1p-a7-H8k" secondAttribute="bottom" constant="-8" id="t6M-Hi-sPI"/>
-                            <constraint firstItem="2Sp-aX-reo" firstAttribute="top" secondItem="heR-1i-oxl" secondAttribute="top" id="tqT-cj-UsW"/>
                             <constraint firstAttribute="leadingMargin" secondItem="d0Q-No-sfC" secondAttribute="leading" id="ucR-W9-weN"/>
                             <constraint firstItem="heR-1i-oxl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vZV-qW-HOz"/>
                             <constraint firstItem="F64-cd-ofJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vyw-af-0Us"/>
@@ -402,16 +377,15 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="healthPointsLabel" destination="bFX-Wc-Pxl" id="wNk-8w-oGq"/>
+                        <outlet property="healthPointsButton" destination="FOh-Mj-JnR" id="O5h-j7-cnd"/>
                         <outlet property="instructionsLabel" destination="wOE-MV-ZRE" id="gej-4D-7Je"/>
                         <outlet property="killButton" destination="heR-1i-oxl" id="Ipx-kf-3yK"/>
-                        <outlet property="reviveButton" destination="2Sp-aX-reo" id="8eX-aw-MuG"/>
                         <outlet property="scoreLabel" destination="g5X-xc-J6L" id="L3W-rs-6Dl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288" y="208"/>
+            <point key="canvasLocation" x="390" y="571"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="qVK-WG-X7n">
@@ -582,7 +556,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hp" width="24" height="24"/>
         <image name="logo" width="291" height="32"/>
     </resources>
 </document>

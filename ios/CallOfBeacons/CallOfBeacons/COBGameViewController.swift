@@ -10,9 +10,8 @@ import UIKit
 
 class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     /// Outlets
+    @IBOutlet weak var healthPointsButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var healthPointsLabel: UILabel!
-    @IBOutlet weak var reviveButton: UIButton!
     @IBOutlet weak var killButton: UIButton!
     @IBOutlet weak var instructionsLabel: UILabel!
     
@@ -32,11 +31,24 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         }
     }
     
+    let pulseAnimation: CABasicAnimation = {
+        let pulseAnimation = CABasicAnimation(keyPath: "opacity")
+        pulseAnimation.duration = 1
+        pulseAnimation.fromValue = 0
+        pulseAnimation.toValue = 1
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = FLT_MAX
+        return pulseAnimation
+    }()
+    
     // MARK: - Object Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -57,9 +69,18 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     }
     
     private func updateUserInterface() {
-        healthPointsLabel?.text = "HP: \(gamerState.healthPoints)"
+        healthPointsButton?.setTitle("HP: \(gamerState.healthPoints)", forState: UIControlState.Normal)
+        healthPointsButton?.enabled = gamerState.canRevive
+        
+        if gamerState.canRevive {
+            healthPointsButton?.setTitleColor(UIColor(red:0.24, green:0.55, blue:0.73, alpha:1.00), forState: UIControlState.Normal)
+            healthPointsButton?.titleLabel?.layer.addAnimation(pulseAnimation, forKey: nil)
+        } else {
+            healthPointsButton?.setTitleColor(UIColor(red:0.53, green:0.60, blue:0.65, alpha:1.00), forState: UIControlState.Normal)
+            healthPointsButton?.titleLabel?.layer.removeAllAnimations()
+        }
+        
         scoreLabel?.text = "Score: \(gamerState.score)"
-        reviveButton?.hidden = !gamerState.canRevive
         killButton?.hidden = gamerState.healthPoints == 0
         
         if gamerState.healthPoints > 0 {
