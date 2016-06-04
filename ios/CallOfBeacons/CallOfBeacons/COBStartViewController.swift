@@ -49,6 +49,13 @@ class COBStartViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    /// Called when the text field returns
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField == nickTextField {
+            performSegueWithIdentifier("GameStart", sender: self)
+        }
+    }
+    
     /// Status bar style for the View Controller
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
