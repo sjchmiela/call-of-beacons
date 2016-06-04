@@ -1,0 +1,13 @@
+body {
+  font-family: 'Titillium Web', 'Helvetica', sans-serif;
+  background-color: #0E1A22;
+  color: #869AA7;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex: 1;
+}
