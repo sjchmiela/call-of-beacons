@@ -50,10 +50,10 @@ class COBBeaconView: UIView {
                 borderColor = UIColor.blackColor()
             }
             
-            if let proximity = beacon.proximity where proximity != .Unknown {
-                layer.opacity = 1
+            if let proximity = beacon.proximity {
+                layer.opacity = proximity == .Unknown ? 0.5 : 1
             } else {
-                layer.opacity = 0.5
+                layer.opacity = 0
             }
         } else {
             layer.opacity = 0

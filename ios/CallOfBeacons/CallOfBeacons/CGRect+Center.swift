@@ -18,6 +18,8 @@ extension CGRect {
             origin.y = newValue.y - (height / 2)
         }
     }
+    
+    var bottomCenter: CGPoint { return CGPoint(x: midX, y: maxY) }
 }
 
 extension CGPoint {

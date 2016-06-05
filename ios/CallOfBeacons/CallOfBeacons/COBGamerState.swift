@@ -51,4 +51,16 @@ class COBGamerState: CustomStringConvertible {
     func hit() {
         healthPoints -= 20
     }
+    
+    var instructionText: String {
+        if isScoring {
+            return "Go grab that flag!"
+        } else {
+            if !canRevive {
+                return "Run to the nearest Health Point to revive."
+            } else {
+                return "Tap the HP bar to revive."
+            }
+        }
+    }
 }

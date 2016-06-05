@@ -16,6 +16,8 @@
 		313085191D036D0A008D834A /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313085181D036D0A008D834A /* CGRect+Center.swift */; };
 		3139DE041D0380160075C041 /* LFTPulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3139DE031D0380160075C041 /* LFTPulseAnimation.swift */; };
 		3139DE0E1D0419C50075C041 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3139DE0C1D0419C50075C041 /* UICountingLabel.m */; };
+		3139DE161D04618A0075C041 /* COBGameViewController+ESTBeaconManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3139DE151D04618A0075C041 /* COBGameViewController+ESTBeaconManagerDelegate.swift */; };
+		3139DE181D04623C0075C041 /* CABasicAnimation+Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3139DE171D04623C0075C041 /* CABasicAnimation+Pulse.swift */; };
 		316098031D0041CA00D50ABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098021D0041CA00D50ABB /* AppDelegate.swift */; };
 		316098081D0041CA00D50ABB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 316098061D0041CA00D50ABB /* Main.storyboard */; };
 		3160980A1D0041CA00D50ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 316098091D0041CA00D50ABB /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 		316098511D00ACFD00D50ABB /* COBHealthPointBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098501D00ACFD00D50ABB /* COBHealthPointBehavior.swift */; };
 		316098531D00AD4E00D50ABB /* COBGamerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098521D00AD4E00D50ABB /* COBGamerState.swift */; };
 		316098551D00AF5600D50ABB /* COBFlagBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098541D00AF5600D50ABB /* COBFlagBehavior.swift */; };
+		31CF19CB1D0466DB00DEE319 /* COBGameViewController+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CF19CA1D0466DB00DEE319 /* COBGameViewController+StatusBar.swift */; };
+		31CF19D31D0466F700DEE319 /* COBGameViewController+IBActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CF19D21D0466F700DEE319 /* COBGameViewController+IBActions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +124,8 @@
 		3139DE031D0380160075C041 /* LFTPulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFTPulseAnimation.swift; sourceTree = "<group>"; };
 		3139DE0C1D0419C50075C041 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
 		3139DE0D1D0419C50075C041 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
+		3139DE151D04618A0075C041 /* COBGameViewController+ESTBeaconManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "COBGameViewController+ESTBeaconManagerDelegate.swift"; sourceTree = "<group>"; };
+		3139DE171D04623C0075C041 /* CABasicAnimation+Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Pulse.swift"; sourceTree = "<group>"; };
 		316097FF1D0041CA00D50ABB /* CallOfBeacons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallOfBeacons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		316098021D0041CA00D50ABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		316098071D0041CA00D50ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 		316098501D00ACFD00D50ABB /* COBHealthPointBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBHealthPointBehavior.swift; sourceTree = "<group>"; };
 		316098521D00AD4E00D50ABB /* COBGamerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBGamerState.swift; sourceTree = "<group>"; };
 		316098541D00AF5600D50ABB /* COBFlagBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBFlagBehavior.swift; sourceTree = "<group>"; };
+		31CF19CA1D0466DB00DEE319 /* COBGameViewController+StatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "COBGameViewController+StatusBar.swift"; sourceTree = "<group>"; };
+		31CF19D21D0466F700DEE319 /* COBGameViewController+IBActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "COBGameViewController+IBActions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				316098431D00716F00D50ABB /* COBPositionNotifier.swift */,
+				3139DE171D04623C0075C041 /* CABasicAnimation+Pulse.swift */,
 				313085181D036D0A008D834A /* CGRect+Center.swift */,
 				313085161D0346E8008D834A /* UIColor+HexString.swift */,
 				3160981C1D0050B700D50ABB /* COBConfiguration.swift */,
@@ -182,6 +191,9 @@
 			children = (
 				313085061D02FA56008D834A /* COBStartViewController.swift */,
 				316098181D00453600D50ABB /* COBGameViewController.swift */,
+				31CF19D21D0466F700DEE319 /* COBGameViewController+IBActions.swift */,
+				31CF19CA1D0466DB00DEE319 /* COBGameViewController+StatusBar.swift */,
+				3139DE151D04618A0075C041 /* COBGameViewController+ESTBeaconManagerDelegate.swift */,
 				313085121D033FF0008D834A /* COBMapViewController.swift */,
 			);
 			name = "View Controllers";
@@ -406,6 +418,7 @@
 				313085071D02FA56008D834A /* COBStartViewController.swift in Sources */,
 				316098551D00AF5600D50ABB /* COBFlagBehavior.swift in Sources */,
 				316098191D00453600D50ABB /* COBGameViewController.swift in Sources */,
+				31CF19D31D0466F700DEE319 /* COBGameViewController+IBActions.swift in Sources */,
 				316098031D0041CA00D50ABB /* AppDelegate.swift in Sources */,
 				313084FF1D02EBFD008D834A /* COBView.swift in Sources */,
 				313085151D034119008D834A /* COBBeaconView.swift in Sources */,
@@ -413,9 +426,12 @@
 				316098441D00716F00D50ABB /* COBPositionNotifier.swift in Sources */,
 				316098211D005C4100D50ABB /* COBBeacon.swift in Sources */,
 				3160981D1D0050B700D50ABB /* COBConfiguration.swift in Sources */,
+				31CF19CB1D0466DB00DEE319 /* COBGameViewController+StatusBar.swift in Sources */,
 				316098531D00AD4E00D50ABB /* COBGamerState.swift in Sources */,
 				316098251D006D3600D50ABB /* CLProximity+CustomStringConvertible.swift in Sources */,
+				3139DE161D04618A0075C041 /* COBGameViewController+ESTBeaconManagerDelegate.swift in Sources */,
 				313085171D0346E8008D834A /* UIColor+HexString.swift in Sources */,
+				3139DE181D04623C0075C041 /* CABasicAnimation+Pulse.swift in Sources */,
 				316098471D00AC5500D50ABB /* COBBeaconBehavior.swift in Sources */,
 				316098511D00ACFD00D50ABB /* COBHealthPointBehavior.swift in Sources */,
 				3160981F1D00551500D50ABB /* SwiftyJSON.swift in Sources */,

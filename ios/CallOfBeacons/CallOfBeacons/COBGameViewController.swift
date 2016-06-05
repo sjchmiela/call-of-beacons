@@ -8,7 +8,7 @@
 
 import UIKit
 
-class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
+class COBGameViewController: UIViewController {
     /// Outlets
     @IBOutlet weak var nickLabel: UILabel!
     @IBOutlet weak var healthPointsButton: UIButton!
@@ -18,6 +18,11 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBOutlet weak var resumeButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
+    /// Map view controller shortcut
+    var mapViewController: COBMapViewController! {
+        return childViewControllers.filter({ $0 is COBMapViewController }).first as! COBMapViewController
+    }
+    
     /// Beacon Manager
     let beaconManager = ESTBeaconManager()
     /// Region that the beacon manager ranges
@@ -27,35 +32,14 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     let notifier = COBPositionNotifier(url: COBConfiguration.putPositionUrl!)
     
     /// Gamer state represented on screen
-    var gamerState: COBGamerState! {
-        // On every gamer state change update UI
-        didSet {
-            self.updateUserInterface()
-        }
-    }
-    
+    var gamerState: COBGamerState!
     var paused = false
-    
-    var mapViewController: COBMapViewController? {
-        return childViewControllers.filter({ $0 is COBMapViewController }).first as? COBMapViewController
-    }
-    
-    let pulseAnimation: CABasicAnimation = {
-        let pulseAnimation = CABasicAnimation(keyPath: "opacity")
-        pulseAnimation.duration = 1
-        pulseAnimation.fromValue = 0
-        pulseAnimation.toValue = 1
-        pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        pulseAnimation.autoreverses = true
-        pulseAnimation.repeatCount = FLT_MAX
-        return pulseAnimation
-    }()
     
     // MARK: - Object Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.beaconManager.delegate = self
-        self.beaconManager.requestAlwaysAuthorization()
+        self.beaconManager.requestWhenInUseAuthorization()
         scoreLabel.format = "Score: %d"
         scoreLabel.animationDuration = 0.5
         scoreLabel.method = UILabelCountingMethod.EaseInOut
@@ -64,7 +48,6 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateUserInterface()
         if !paused {
             self.beaconManager.startRangingBeaconsInRegion(beaconRegion)
         }
@@ -76,99 +59,20 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         self.beaconManager.stopRangingBeaconsInRegion(beaconRegion)
     }
     
-    // MARK: - UI
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
-    
-    private func updateUserInterface() {
-        hitButton?.hidden = paused || gamerState.healthPoints == 0
-        pauseButton?.hidden = paused
-        exitButton?.hidden = !paused
-        resumeButton?.hidden = !paused
+    func updateUserInterface() {
+        hitButton.hidden = paused
+        pauseButton.hidden = paused
+        resumeButton.hidden = !paused
+        exitButton.hidden = !paused
         
-        mapViewController?.gamerState = gamerState
-        mapViewController?.beaconsView.hidden = paused
-        
-        nickLabel?.text = gamerState.nick.uppercaseString
-        scoreLabel?.countFromCurrentValueTo(CGFloat(gamerState.score))
-        
-        healthPointsButton?.setTitle("HP: \(gamerState.healthPoints)", forState: UIControlState.Normal)
-        healthPointsButton?.enabled = gamerState.canRevive
-        
-        if gamerState.canRevive {
-            healthPointsButton?.setTitleColor(UIColor(red:0.24, green:0.55, blue:0.73, alpha:1.00), forState: UIControlState.Normal)
-            healthPointsButton?.titleLabel?.layer.addAnimation(pulseAnimation, forKey: nil)
-        } else {
-            healthPointsButton?.setTitleColor(UIColor(red:0.53, green:0.60, blue:0.65, alpha:1.00), forState: UIControlState.Normal)
-            healthPointsButton?.titleLabel?.layer.removeAllAnimations()
-        }
+        nickLabel.text = gamerState.nick
+        scoreLabel.countFromCurrentValueTo(CGFloat(gamerState.score))
+        healthPointsButton.setTitle("HP: \(gamerState.healthPoints)", forState: .Normal)
         
         if paused {
-            instructionsLabel?.text = "Game paused"
+            instructionsLabel.text = "Game paused"
         } else {
-            if gamerState.healthPoints > 0 {
-                instructionsLabel?.text = "Grab the flag!"
-            } else {
-                if gamerState.canRevive {
-                    instructionsLabel?.text = "Tap the HP bar to revive."
-                } else {
-                    instructionsLabel?.text = "Run to the nearest health point!"
-                }
-            }
+            instructionsLabel.text = gamerState.instructionText
         }
-    }
-    
-    // MARK: - Button actions
-    
-    @IBAction func hitButtonTapped(sender: UIButton) {
-        gamerState.hit()
-        updateUserInterface()
-    }
-    
-    @IBAction func reviveTapped(sender: UIButton) {
-        gamerState.revive()
-        updateUserInterface()
-    }
-    
-    @IBAction func exitButtonTapped(sender: UIButton) {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func pauseButtonTapped(sender: UIButton) {
-        paused = true
-        self.beaconManager.stopRangingBeaconsInRegion(beaconRegion)
-        mapViewController?.beacons = []
-        updateUserInterface()
-    }
-    
-    @IBAction func resumeButtonTapped(sender: UIButton) {
-        paused = false
-        self.beaconManager.startRangingBeaconsInRegion(beaconRegion)
-        updateUserInterface()
-    }
-    
-    // MARK: - ESTBeaconManagerDelegate
-    
-    /// Delegate method called when beacon manager detects beacons
-    func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-        // Map the CLBeacons to our COBBeacons
-        let cobBeacons = beacons.map({COBBeacon(beacon: $0)})
-        // For each COBBeacon trigger action
-        for beacon in cobBeacons {
-            if let behavior = beacon.behavior {
-                gamerState = behavior.beaconIsInRange(beacon, forGamerState: gamerState)
-            }
-        }
-        // Update positions on the server
-        notifier.update(cobBeacons)
-        mapViewController?.beacons = cobBeacons
-        
-        // Print the beacon info to the console
-        for beacon in cobBeacons {
-            print(beacon)
-        }
-        print("---")
     }
 }
