@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable
 class COBBeaconView: UIView {
     var shapeLayer: CAShapeLayer!
+    var pulseAnimationLayer: LFTPulseAnimation?
     @IBInspectable var fillColor: UIColor? {
         didSet {
             shapeLayer.fillColor = fillColor?.CGColor
@@ -36,10 +37,6 @@ class COBBeaconView: UIView {
         self.init(frame: CGRect(x: center.x - 17, y: center.y - 24, width: 34, height: 48))
     }
     
-    func pulse() {
-        layer.insertSublayer(LFTPulseAnimation(repeatCount: 1, radius: 40, position: bounds.center), below: shapeLayer)
-    }
-    
     func updateWithBeacon(beacon: COBBeacon?, andGamerState gamerState: COBGamerState?) {
         if let beacon = beacon {
             fillColor = UIColor(hexString: beacon.color) ?? UIColor.whiteColor()
@@ -52,6 +49,11 @@ class COBBeaconView: UIView {
             
             if let proximity = beacon.proximity {
                 layer.opacity = proximity == .Unknown ? 0.5 : 1
+                if let radius = beacon.behavior?.pulseRadius(beacon, forGamerState: gamerState), let shapeLayer = shapeLayer {
+                    pulseAnimationLayer?.removeFromSuperlayer()
+                    pulseAnimationLayer = LFTPulseAnimation(repeatCount: 1, radius: radius, position: bounds.center)
+                    layer.insertSublayer(pulseAnimationLayer!, below: shapeLayer)
+                }
             } else {
                 layer.opacity = 0
             }

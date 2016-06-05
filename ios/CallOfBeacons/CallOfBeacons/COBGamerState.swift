@@ -16,6 +16,7 @@ class COBGamerState: CustomStringConvertible {
     var healthPoints: Int = 100 {
         didSet {
             if healthPoints < 0 { healthPoints = 0 }
+            if healthPoints > 100 { healthPoints = 100 }
         }
     }
     /// Score of the gamer

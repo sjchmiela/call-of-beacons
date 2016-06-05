@@ -37,10 +37,10 @@ class COBFlagBehavior: COBBeaconBehavior {
         return false
     }
     
-    static func pulsating(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> Bool {
-        if let proximity = beacon.proximity where proximity != .Unknown && gamerState.isScoring {
-            return true
+    static func pulseRadius(beacon: COBBeacon, forGamerState gamerState: COBGamerState?) -> CGFloat? {
+        if let gamerState = gamerState, let proximity = beacon.proximity where proximity != .Unknown && gamerState.isScoring {
+            return 15 * (4 - CGFloat(proximity.rawValue)) + 15
         }
-        return false
+        return nil
     }
 }

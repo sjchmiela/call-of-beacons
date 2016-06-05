@@ -14,7 +14,7 @@ class LFTPulseAnimation: CALayer {
     var fromValueForRadius:     Float = 0.0
     var fromValueForAlpha:      Float = 0.45
     var keyTimeForHalfOpacity:  Float = 0.2
-    var animationDuration:      NSTimeInterval = 3.0
+    var animationDuration:      NSTimeInterval = 0.7
     var pulseInterval:          NSTimeInterval = 0.0
     var useTimingFunction:      Bool = true
     var animationGroup:         CAAnimationGroup = CAAnimationGroup()

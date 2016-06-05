@@ -599,7 +599,7 @@
                                 <rect key="frame" x="20" y="180" width="560" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hQZ-zf-rVg">
-                                        <rect key="frame" x="8" y="8" width="544" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
                                         <color key="tintColor" red="0.65098039220000004" green="0.72549019609999998" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.65098039220000004" green="0.72549019609999998" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -617,11 +617,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.16078431369999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="hQZ-zf-rVg" firstAttribute="trailing" secondItem="xLR-g3-wHT" secondAttribute="trailingMargin" id="8cW-AO-jyn"/>
-                                    <constraint firstItem="hQZ-zf-rVg" firstAttribute="leading" secondItem="xLR-g3-wHT" secondAttribute="leadingMargin" id="IJP-ll-BJX"/>
-                                    <constraint firstItem="hQZ-zf-rVg" firstAttribute="bottom" secondItem="xLR-g3-wHT" secondAttribute="bottomMargin" id="Mc3-0o-djA"/>
+                                    <constraint firstItem="hQZ-zf-rVg" firstAttribute="trailing" secondItem="xLR-g3-wHT" secondAttribute="trailingMargin" constant="8" id="8cW-AO-jyn"/>
+                                    <constraint firstItem="hQZ-zf-rVg" firstAttribute="leading" secondItem="xLR-g3-wHT" secondAttribute="leadingMargin" constant="-8" id="IJP-ll-BJX"/>
+                                    <constraint firstItem="hQZ-zf-rVg" firstAttribute="bottom" secondItem="xLR-g3-wHT" secondAttribute="bottomMargin" constant="8" id="Mc3-0o-djA"/>
                                     <constraint firstAttribute="height" constant="44" id="SZZ-6b-jdw"/>
-                                    <constraint firstItem="hQZ-zf-rVg" firstAttribute="top" secondItem="xLR-g3-wHT" secondAttribute="topMargin" id="Wwf-Kk-7mf"/>
+                                    <constraint firstItem="hQZ-zf-rVg" firstAttribute="top" secondItem="xLR-g3-wHT" secondAttribute="topMargin" constant="-8" id="Wwf-Kk-7mf"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">

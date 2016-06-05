@@ -13,5 +13,5 @@ protocol COBBeaconBehavior {
     /// Mutates gamerState based on the proximity of the beacon
     static func beaconIsInRange(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> COBGamerState
     static func highlighted(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> Bool
-    static func pulsating(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> Bool
+    static func pulseRadius(beacon: COBBeacon, forGamerState gamerState: COBGamerState?) -> CGFloat?
 }

@@ -70,7 +70,7 @@ class COBGameViewController: UIViewController {
         resumeButton.hidden = !paused
         exitButton.hidden = !paused
         
-        nickLabel.text = gamerState.nick
+        nickLabel.text = gamerState.nick.uppercaseString
         scoreLabel.countFromCurrentValueTo(CGFloat(gamerState.score))
         healthPointsButton.setTitle("HP: \(gamerState.healthPoints)", forState: .Normal)
         

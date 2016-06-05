@@ -19,7 +19,7 @@ class COBHealthPointBehavior: COBBeaconBehavior {
         return gamerState.shouldRevive
     }
     
-    static func pulsating(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> Bool {
-        return false
+    static func pulseRadius(beacon: COBBeacon, forGamerState gamerState: COBGamerState?) -> CGFloat? {
+        return nil
     }
 }
