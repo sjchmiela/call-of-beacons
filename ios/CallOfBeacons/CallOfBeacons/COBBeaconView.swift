@@ -40,6 +40,26 @@ class COBBeaconView: UIView {
         layer.insertSublayer(LFTPulseAnimation(repeatCount: 1, radius: 40, position: bounds.center), below: shapeLayer)
     }
     
+    func updateWithBeacon(beacon: COBBeacon?, andGamerState gamerState: COBGamerState?) {
+        if let beacon = beacon {
+            fillColor = UIColor(hexString: beacon.color) ?? UIColor.whiteColor()
+            
+            if let behavior = beacon.behavior, let gamerState = gamerState where behavior.highlighted(beacon, forGamerState: gamerState) {
+                borderColor = UIColor.whiteColor()
+            } else {
+                borderColor = UIColor.blackColor()
+            }
+            
+            if let proximity = beacon.proximity where proximity != .Unknown {
+                layer.opacity = 1
+            } else {
+                layer.opacity = 0.5
+            }
+        } else {
+            layer.opacity = 0
+        }
+    }
+    
     private func shapeLayerInit() {
         shapeLayer = CAShapeLayer()
         shapeLayer.path = drawing.CGPath

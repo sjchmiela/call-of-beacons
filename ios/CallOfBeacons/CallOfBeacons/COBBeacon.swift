@@ -9,7 +9,7 @@
 import Foundation
 
 /// Beacon model with all the information we need
-class COBBeacon: Equatable, CustomStringConvertible, Hashable {
+class COBBeacon: Equatable, CustomStringConvertible, Hashable, Comparable {
     /// Major of the beacon
     var major: Int?
     /// Minor of the beacon
@@ -77,7 +77,7 @@ extension COBBeacon {
     
     /// All the known beacons
     static var knownBeacons: [COBBeacon] {
-        return COBConfiguration.beacons
+        return COBConfiguration.beacons.sort()
     }
     
     /// Find one beacon with these major and minor out of all the known beacons
@@ -93,4 +93,8 @@ extension COBBeacon {
 /// Comparison implementation
 func ==(lhs: COBBeacon, rhs: COBBeacon) -> Bool {
     return lhs.major == rhs.major && lhs.minor == rhs.minor
+}
+
+func <(lhs: COBBeacon, rhs: COBBeacon) -> Bool {
+    return lhs.major == rhs.major ? lhs.minor < rhs.minor : lhs.major < rhs.major
 }

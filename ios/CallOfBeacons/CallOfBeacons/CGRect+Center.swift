@@ -19,3 +19,11 @@ extension CGRect {
         }
     }
 }
+
+extension CGPoint {
+    func pointFor(angle: CGFloat, withRadius radius: CGFloat) -> CGPoint {
+        let x = cos(angle) * radius + self.x
+        let y = sin(angle) * radius + self.y
+        return CGPoint(x: x, y: y)
+    }
+}

@@ -10,15 +10,18 @@ import UIKit
 
 class COBMapViewController: UIViewController {
     @IBOutlet weak var beaconsView: UIView!
-    var beaconsViews: [COBBeacon: COBBeaconView]!
-    var gamerState: COBGamerState? {
-        didSet {
-            layoutBeacons(false)
-        }
+    var beaconsViews: [COBBeaconView]!
+    var gamerState: COBGamerState! {
+        return (parentViewController as! COBGameViewController).gamerState
     }
     var beacons: [COBBeacon]?  {
         didSet {
-            if let beacons = beacons where beaconsViews != nil {
+            if let beacons = beacons {
+                for (index, beacon) in COBBeacon.knownBeacons.enumerate() {
+                    if let index = beacons.indexOf(beacon) {
+                        
+                    }
+                }
                 for beacon in beacons {
                     let beaconView = beaconsViews[beacon]
                     beaconsViews.removeValueForKey(beacon)
@@ -28,24 +31,21 @@ class COBMapViewController: UIViewController {
             }
         }
     }
+    var beaconsOrigin: CGPoint? {
+        return beaconsView != nil ? CGPoint(x: beaconsView.bounds.midX, y: beaconsView.bounds.maxY) : nil
+    }
     var maxDistance: CGFloat { return min(beaconsView.bounds.size.width / 2, beaconsView.bounds.size.height) }
     var proximityRadiusStep: CGFloat { return maxDistance / 3 }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        beaconsViews = [COBBeacon: COBBeaconView]()
-        for beacon in COBBeacon.knownBeacons.sort({ $0.major == $1.major ? $0.minor < $1.minor : $0.major < $1.minor }) {
+        
+        beaconsViews = [COBBeaconView]()
+        for beacon in COBBeacon.knownBeacons {
             let beaconView = COBBeaconView(center: CGPoint(x: 0, y: 0))
-            if let color = beacon.color {
-                beaconView.fillColor = UIColor(hexString: color)
-            }
-            beaconView.hidden = true
+            beaconView.updateWithBeacon(beacon, andGamerState: gamerState)
             beaconsView.addSubview(beaconView)
-            if let index = beacons?.indexOf({$0 == beacon}) {
-                beaconsViews[beacons![index]] = beaconView
-            } else {
-                beaconsViews[beacon] = beaconView
-            }
+            beaconsViews.append(beaconView)
         }
     }
     
@@ -56,26 +56,17 @@ class COBMapViewController: UIViewController {
     
     private func layoutBeacons(pulse: Bool = true) {
         if let beaconsViews = beaconsViews, let beaconsView = beaconsView {
-            let angleStep = (CGFloat(M_PI) / CGFloat(beaconsViews.count + 1))
+            let angleStep = CGFloat(M_PI) / CGFloat(beaconsViews.count + 1)
             var beaconAngle = CGFloat(M_PI) + angleStep
             let origin = CGPoint(x: beaconsView.bounds.midX, y: beaconsView.bounds.maxY)
             for (beacon, view) in beaconsViews {
-                UIView.animateWithDuration(view.hidden ? 0 : 0.3, animations: {
-                    if let proximity = beacon.proximity {
-                        if proximity == .Unknown {
-                            view.layer.opacity = 0.5
-                        } else {
-                            view.hidden = false
-                            view.layer.opacity = 1
-                            view.frame.center = self.pointFor(beaconAngle, originatingFrom: origin, withRadius: CGFloat(proximity.rawValue) * self.proximityRadiusStep)
-                            if let behavior = beacon.behavior, let gamerState = self.gamerState {
-                                view.borderColor = behavior.highlighted(beacon, forGamerState: gamerState) ? UIColor.whiteColor() : UIColor.blackColor()
-                            }
-                        }
-                    } else {
-                        view.layer.opacity = 0.25
-                    }
-                })
+                if view.layer.opacity == 0 {
+                    updateBeacon(beacon, view: view, angle: beaconAngle)
+                } else {
+                    UIView.animateWithDuration(0.3, animations: { 
+                        updateBeacon(beacon, view: view, angle: beaconAngle)
+                    })
+                }
                 
                 if let behavior = beacon.behavior, let gamerState = self.gamerState where behavior.pulsating(beacon, forGamerState: gamerState) && pulse {
                     view.pulse()
@@ -85,9 +76,11 @@ class COBMapViewController: UIViewController {
         }
     }
     
-    private func pointFor(angle: CGFloat, originatingFrom origin: CGPoint, withRadius radius: CGFloat) -> CGPoint {
-        let x = cos(angle) * radius + origin.x
-        let y = sin(angle) * radius + origin.y
-        return CGPoint(x: x, y: y)
+    private func updateBeacon(beacon: COBBeacon, view: COBBeaconView, angle: CGFloat) {
+        
+        view.updateWithBeacon(beacon, andGamerState: gamerState)
+        if let proximity = beacon.proximity {
+            view.frame.center = origin.pointFor(angle, withRadius: CGFloat(proximity.rawValue) * proximityRadiusStep)
+        }
     }
 }
