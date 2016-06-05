@@ -15,7 +15,9 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     @IBOutlet weak var scoreLabel: UICountingLabel!
     @IBOutlet weak var hitButton: UIButton!
     @IBOutlet weak var instructionsLabel: UILabel!
-    
+    @IBOutlet weak var resumeButton: UIButton!
+    @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     /// Beacon Manager
     let beaconManager = ESTBeaconManager()
     /// Region that the beacon manager ranges
@@ -31,6 +33,8 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
             self.updateUserInterface()
         }
     }
+    
+    var paused = false
     
     var mapViewController: COBMapViewController? {
         return childViewControllers.filter({ $0 is COBMapViewController }).first as? COBMapViewController
@@ -60,13 +64,16 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.beaconManager.startRangingBeaconsInRegion(self.beaconRegion)
         self.updateUserInterface()
+        if !paused {
+            self.beaconManager.startRangingBeaconsInRegion(beaconRegion)
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
-        self.beaconManager.stopRangingBeaconsInRegion(self.beaconRegion)
         super.viewDidDisappear(animated)
+        paused = true
+        self.beaconManager.stopRangingBeaconsInRegion(beaconRegion)
     }
     
     // MARK: - UI
@@ -76,6 +83,11 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     }
     
     private func updateUserInterface() {
+        hitButton?.hidden = paused
+        pauseButton?.hidden = paused
+        exitButton?.hidden = !paused
+        resumeButton?.hidden = !paused
+        
         mapViewController?.gamerState = gamerState
         
         nickLabel?.text = gamerState.nick.uppercaseString
@@ -108,7 +120,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     // MARK: - Button actions
     
     @IBAction func hitButtonTapped(sender: UIButton) {
-        gamerState.kill()
+        gamerState.hit()
         updateUserInterface()
     }
     
@@ -117,8 +129,21 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         updateUserInterface()
     }
     
-    @IBAction func resetButtonTapped(sender: UIButton) {
+    @IBAction func exitButtonTapped(sender: UIButton) {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func pauseButtonTapped(sender: UIButton) {
+        paused = true
+        self.beaconManager.stopRangingBeaconsInRegion(beaconRegion)
+        mapViewController?.beacons = []
+        updateUserInterface()
+    }
+    
+    @IBAction func resumeButtonTapped(sender: UIButton) {
+        paused = false
+        self.beaconManager.startRangingBeaconsInRegion(beaconRegion)
+        updateUserInterface()
     }
     
     // MARK: - ESTBeaconManagerDelegate

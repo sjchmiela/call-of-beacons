@@ -13,7 +13,11 @@ class COBGamerState: CustomStringConvertible {
     /// Nick of the gamer
     var nick: String
     /// Health points of the gamer
-    var healthPoints: Int = 100
+    var healthPoints: Int = 100 {
+        didSet {
+            if healthPoints < 0 { healthPoints = 0 }
+        }
+    }
     /// Score of the gamer
     var score: Int = 0
     var canRevive: Bool = false {
@@ -44,7 +48,7 @@ class COBGamerState: CustomStringConvertible {
     }
     
     /// Called when the gamer is killed.
-    func kill() {
-        healthPoints = 0
+    func hit() {
+        healthPoints -= 20
     }
 }

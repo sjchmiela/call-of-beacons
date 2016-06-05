@@ -13,7 +13,7 @@ class COBMapViewController: UIViewController {
     var beaconsViews: [COBBeacon: COBBeaconView]!
     var gamerState: COBGamerState? {
         didSet {
-            layoutBeacons()
+            layoutBeacons(false)
         }
     }
     var beacons: [COBBeacon]?  {
@@ -51,10 +51,10 @@ class COBMapViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        layoutBeacons()
+        layoutBeacons(false)
     }
     
-    private func layoutBeacons() {
+    private func layoutBeacons(pulse: Bool = true) {
         if let beaconsViews = beaconsViews, let beaconsView = beaconsView {
             let angleStep = (CGFloat(M_PI) / CGFloat(beaconsViews.count + 1))
             var beaconAngle = CGFloat(M_PI) + angleStep
@@ -77,7 +77,7 @@ class COBMapViewController: UIViewController {
                     }
                 })
                 
-                if let behavior = beacon.behavior, let gamerState = self.gamerState where behavior.pulsating(beacon, forGamerState: gamerState) {
+                if let behavior = beacon.behavior, let gamerState = self.gamerState where behavior.pulsating(beacon, forGamerState: gamerState) && pulse {
                     view.pulse()
                 }
                 beaconAngle += angleStep
