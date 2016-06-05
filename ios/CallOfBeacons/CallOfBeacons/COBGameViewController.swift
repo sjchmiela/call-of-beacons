@@ -83,12 +83,13 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     }
     
     private func updateUserInterface() {
-        hitButton?.hidden = paused
+        hitButton?.hidden = paused || gamerState.healthPoints == 0
         pauseButton?.hidden = paused
         exitButton?.hidden = !paused
         resumeButton?.hidden = !paused
         
         mapViewController?.gamerState = gamerState
+        mapViewController?.beaconsView.hidden = paused
         
         nickLabel?.text = gamerState.nick.uppercaseString
         scoreLabel?.countFromCurrentValueTo(CGFloat(gamerState.score))
@@ -104,15 +105,17 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
             healthPointsButton?.titleLabel?.layer.removeAllAnimations()
         }
         
-        hitButton?.hidden = gamerState.healthPoints == 0
-        
-        if gamerState.healthPoints > 0 {
-            instructionsLabel?.text = "Grab the flag!"
+        if paused {
+            instructionsLabel?.text = "Game paused"
         } else {
-            if gamerState.canRevive {
-                instructionsLabel?.text = "Tap the HP bar to revive."
+            if gamerState.healthPoints > 0 {
+                instructionsLabel?.text = "Grab the flag!"
             } else {
-                instructionsLabel?.text = "Run to the nearest health point!"
+                if gamerState.canRevive {
+                    instructionsLabel?.text = "Tap the HP bar to revive."
+                } else {
+                    instructionsLabel?.text = "Run to the nearest health point!"
+                }
             }
         }
     }
