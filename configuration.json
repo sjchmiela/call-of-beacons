@@ -12,5 +12,6 @@
     "2": 5,
     "3": 2
   },
-  "revivalPenalty": -10
+  "revivalPenalty": -10,
+  "hitDeduction": -20
 }

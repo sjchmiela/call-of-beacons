@@ -51,12 +51,14 @@ class COBGameViewController: UIViewController {
         if !paused {
             self.beaconManager.startRangingBeaconsInRegion(beaconRegion)
         }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(COBGameViewController.pauseButtonTapped), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         paused = true
         self.beaconManager.stopRangingBeaconsInRegion(beaconRegion)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func updateUserInterface() {
@@ -68,6 +70,14 @@ class COBGameViewController: UIViewController {
         nickLabel.text = gamerState.nick
         scoreLabel.countFromCurrentValueTo(CGFloat(gamerState.score))
         healthPointsButton.setTitle("HP: \(gamerState.healthPoints)", forState: .Normal)
+        
+        if gamerState.canRevive {
+            healthPointsButton.titleLabel!.layer.addAnimation(CABasicAnimation.pulseAnimation(0.5, fromValue: 1, toValue: 0.5), forKey: nil)
+            healthPointsButton.setTitleColor(UIColor.cobBlueColor(), forState: .Normal)
+        } else {
+            healthPointsButton.titleLabel!.layer.removeAllAnimations()
+            healthPointsButton.setTitleColor(UIColor.cobTextColor(), forState: .Normal)
+        }
         
         if paused {
             instructionsLabel.text = "Game paused"

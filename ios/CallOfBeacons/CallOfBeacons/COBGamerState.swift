@@ -43,13 +43,13 @@ class COBGamerState: CustomStringConvertible {
     
     /// Called when the gamer is revived. Every revival deducts points.
     func revive() {
-        score -= COBConfiguration.revivalPenalty
+        score += COBConfiguration.revivalPenalty
         healthPoints = 100
     }
     
     /// Called when the gamer is killed.
     func hit() {
-        healthPoints -= 20
+        healthPoints -= COBConfiguration.hitDeduction
     }
     
     var instructionText: String {

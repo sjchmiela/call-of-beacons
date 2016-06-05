@@ -33,6 +33,7 @@ class COBConfiguration {
     }()
     /// Amount of points deducted from gamer's score when on revival
     static let revivalPenalty: Int = { return configuration["revivalPenalty"].int ?? 0 }()
+    static let hitDeduction: Int = { return configuration["hitDeduction"].int ?? 0 }()
     /// Dictionary of proximity -> score
     static let proximityToScore: [CLProximity: Int] = {
         var proximityToScore = [CLProximity: Int]()

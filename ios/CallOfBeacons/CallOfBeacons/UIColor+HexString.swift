@@ -10,6 +10,15 @@ import Foundation
 import UIKit
 
 extension UIColor {
+    
+    static func cobBlueColor() -> UIColor {
+        return UIColor(red:0.24, green:0.55, blue:0.73, alpha:1.00)
+    }
+    
+    static func cobTextColor() -> UIColor {
+        return UIColor(red:0.53, green:0.60, blue:0.65, alpha:1.00)
+    }
+    
     convenience init?(hexString: String?) {
         if let hexString = hexString {
             let hexString:NSString = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
