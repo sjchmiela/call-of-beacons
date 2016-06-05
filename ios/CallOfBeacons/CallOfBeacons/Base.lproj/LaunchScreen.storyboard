@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,17 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="gTu-my-ad7">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="TYo-Aw-raB">
+                                <rect key="frame" x="155" y="84" width="291" height="32"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beacon" translatesAutoresizingMaskIntoConstraints="NO" id="IgJ-3N-t6m">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.054901960784313725" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="gTu-my-ad7" secondAttribute="trailing" id="0eg-3P-8zg"/>
-                            <constraint firstItem="gTu-my-ad7" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="9YN-96-qgV"/>
-                            <constraint firstItem="gTu-my-ad7" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Wkb-JZ-zSV"/>
-                            <constraint firstItem="gTu-my-ad7" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="iaj-8V-Dha"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IgJ-3N-t6m" secondAttribute="trailing" constant="-20" id="63t-an-DdC"/>
+                            <constraint firstItem="IgJ-3N-t6m" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="84k-DP-iLq"/>
+                            <constraint firstItem="IgJ-3N-t6m" firstAttribute="centerX" secondItem="TYo-Aw-raB" secondAttribute="centerX" id="8R4-7n-9Xn"/>
+                            <constraint firstItem="IgJ-3N-t6m" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="Dtb-p0-3Px"/>
+                            <constraint firstItem="TYo-Aw-raB" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="64" id="N2r-4C-jn6"/>
+                            <constraint firstItem="IgJ-3N-t6m" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="T41-tB-OhB"/>
+                            <constraint firstItem="IgJ-3N-t6m" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ZQd-uG-Onc"/>
+                            <constraint firstItem="TYo-Aw-raB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="z9S-Vx-0OG"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="84k-DP-iLq"/>
+                                <exclude reference="8R4-7n-9Xn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
@@ -37,6 +51,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="beacon" width="206" height="300"/>
         <image name="logo" width="291" height="32"/>
     </resources>
 </document>

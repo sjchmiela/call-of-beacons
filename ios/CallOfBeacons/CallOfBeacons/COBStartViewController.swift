@@ -11,7 +11,17 @@ import UIKit
 class COBStartViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nickTextField: UITextField!
     @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var connectingToLabel: UILabel!
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let url = COBConfiguration.putPositionUrl {
+            connectingToLabel.text = "Sending position updates to:\n\(url)"
+        } else {
+            connectingToLabel.text = "URL for sending position updates\nis not configured."
+        }
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

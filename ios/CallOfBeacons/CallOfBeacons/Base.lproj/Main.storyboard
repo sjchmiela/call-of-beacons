@@ -706,6 +706,12 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="GameStart" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="aTc-B3-Wo4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tS7-tl-FIJ">
+                                <rect key="frame" x="0.0" y="124" width="600" height="13.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" red="0.2470588235" green="0.32156862749999998" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.054901960780000002" green="0.1019607843" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -725,9 +731,12 @@
                             <constraint firstItem="Bwr-Is-NRf" firstAttribute="top" secondItem="xLR-g3-wHT" secondAttribute="bottom" constant="44" id="XAi-0v-OTZ"/>
                             <constraint firstItem="b8V-ud-1LB" firstAttribute="leading" secondItem="xLR-g3-wHT" secondAttribute="trailing" constant="-8" id="Z59-CB-R2N"/>
                             <constraint firstItem="xLR-g3-wHT" firstAttribute="leading" secondItem="HVt-tN-SOw" secondAttribute="trailing" constant="-8" id="b1j-fz-au3"/>
+                            <constraint firstItem="tS7-tl-FIJ" firstAttribute="leading" secondItem="hQP-qO-HqM" secondAttribute="leadingMargin" constant="-20" id="f4J-g9-JEa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tS7-tl-FIJ" secondAttribute="trailing" constant="-20" id="gmw-cY-4Cw"/>
                             <constraint firstItem="xLR-g3-wHT" firstAttribute="top" secondItem="HVt-tN-SOw" secondAttribute="bottom" constant="-8" id="l4h-04-Gz5"/>
                             <constraint firstItem="xLR-g3-wHT" firstAttribute="leading" secondItem="ppn-e1-uvj" secondAttribute="trailing" constant="-8" id="o2S-RX-fZl"/>
                             <constraint firstItem="b8V-ud-1LB" firstAttribute="top" secondItem="xLR-g3-wHT" secondAttribute="bottom" constant="-8" id="qb8-cr-mjP"/>
+                            <constraint firstItem="tS7-tl-FIJ" firstAttribute="top" secondItem="3Zh-D3-NWe" secondAttribute="bottom" constant="8" id="uuG-jy-wvs"/>
                             <constraint firstItem="y5x-c3-fDR" firstAttribute="trailing" secondItem="b8V-ud-1LB" secondAttribute="trailing" id="v3I-LZ-RVn"/>
                             <constraint firstItem="y5x-c3-fDR" firstAttribute="top" secondItem="HVt-tN-SOw" secondAttribute="top" id="zp8-gq-4F7"/>
                         </constraints>
@@ -739,6 +748,7 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="connectingToLabel" destination="tS7-tl-FIJ" id="mSI-nD-ACn"/>
                         <outlet property="joinButton" destination="Bwr-Is-NRf" id="kAZ-9a-DxB"/>
                         <outlet property="nickTextField" destination="hQZ-zf-rVg" id="1ZJ-FC-3r2"/>
                     </connections>
