@@ -11,7 +11,11 @@ import UIKit
 class COBMapViewController: UIViewController {
     @IBOutlet weak var beaconsView: UIView!
     var beaconsViews: [COBBeacon: COBBeaconView]!
-    var gamerState: COBGamerState?
+    var gamerState: COBGamerState? {
+        didSet {
+            layoutBeacons()
+        }
+    }
     var beacons: [COBBeacon]?  {
         didSet {
             if let beacons = beacons where beaconsViews != nil {
@@ -53,28 +57,28 @@ class COBMapViewController: UIViewController {
     private func layoutBeacons() {
         if let beaconsViews = beaconsViews, let beaconsView = beaconsView {
             let angleStep = (CGFloat(M_PI) / CGFloat(beaconsViews.count + 1))
-            var beaconAngle: CGFloat = CGFloat(M_PI) + angleStep
+            var beaconAngle = CGFloat(M_PI) + angleStep
             let origin = CGPoint(x: beaconsView.bounds.midX, y: beaconsView.bounds.maxY)
             for (beacon, view) in beaconsViews {
-                if let proximity = beacon.proximity {
-                    if proximity == .Unknown {
-                        view.layer.opacity = 0.5
-                        view.hidden = false
-                    } else {
-                        view.hidden = false
-                        view.layer.opacity = 1
-                        view.frame.center = pointFor(beaconAngle, originatingFrom: origin, withRadius: CGFloat(proximity.rawValue) * proximityRadiusStep)
-                        if let gamerState = gamerState where gamerState.isScoring && beacon.shouldPulse {
-                            view.pulse()
-                        }
-                        if let behaviorName = beacon.behaviorName, let gamerState = gamerState where behaviorName == "healthPoint" && gamerState.shouldRevive {
-                            view.borderColor = UIColor.whiteColor()
+                UIView.animateWithDuration(view.hidden ? 0 : 0.3, animations: {
+                    if let proximity = beacon.proximity {
+                        if proximity == .Unknown {
+                            view.layer.opacity = 0.5
                         } else {
-                            view.borderColor = UIColor.blackColor()
+                            view.hidden = false
+                            view.layer.opacity = 1
+                            view.frame.center = self.pointFor(beaconAngle, originatingFrom: origin, withRadius: CGFloat(proximity.rawValue) * self.proximityRadiusStep)
+                            if let behavior = beacon.behavior, let gamerState = self.gamerState {
+                                view.borderColor = behavior.highlighted(beacon, forGamerState: gamerState) ? UIColor.whiteColor() : UIColor.blackColor()
+                            }
                         }
+                    } else {
+                        view.layer.opacity = 0.25
                     }
-                } else {
-                    view.layer.opacity = 0.25
+                })
+                
+                if let behavior = beacon.behavior, let gamerState = self.gamerState where behavior.pulsating(beacon, forGamerState: gamerState) {
+                    view.pulse()
                 }
                 beaconAngle += angleStep
             }

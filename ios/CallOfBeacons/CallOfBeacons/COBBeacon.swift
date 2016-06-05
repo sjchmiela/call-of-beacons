@@ -27,18 +27,12 @@ class COBBeacon: Equatable, CustomStringConvertible, Hashable {
         return "Beacon \(name ?? "")\n\t\(proximity?.description ?? "unknown") to \(behaviorName ?? "unknown")"
     }
     /// Behavior of the beacon
-    var behavior: COBBeaconBehavior? {
-        if let behaviorName = behaviorName {
-            switch behaviorName {
-            case "flag":
-                return COBFlagBehavior()
-            case "healthPoint":
-                return COBHealthPointBehavior()
-            default:
-                return nil
-            }
+    var behavior: COBBeaconBehavior.Type? {
+        if let behaviorName = behaviorName, let behaviorType = COBBeacon.behaviors[behaviorName] {
+            return behaviorType
+        } else {
+            return nil
         }
-        return nil
     }
     
     var shouldPulse: Bool {
@@ -73,6 +67,14 @@ class COBBeacon: Equatable, CustomStringConvertible, Hashable {
 }
 
 extension COBBeacon {
+    /// All the known behaviorNames and their behaviors
+    static let behaviors: [String: COBBeaconBehavior.Type] = {
+        return [
+            "flag": COBFlagBehavior.self,
+            "healthPoint": COBHealthPointBehavior.self
+        ]
+    }()
+    
     /// All the known beacons
     static var knownBeacons: [COBBeacon] {
         return COBConfiguration.beacons

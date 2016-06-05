@@ -9,7 +9,7 @@
 import Foundation
 
 class COBFlagBehavior: COBBeaconBehavior {
-    func beaconIsInRange(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> COBGamerState {
+    static func beaconIsInRange(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> COBGamerState {
         // If the gamer is alive
         if gamerState.healthPoints > 0 {
             // Add to the score points based on the proximity.
@@ -28,5 +28,19 @@ class COBFlagBehavior: COBBeaconBehavior {
         }
         
         return gamerState
+    }
+    
+    static func highlighted(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> Bool {
+        if let proximity = beacon.proximity where proximity != .Unknown && gamerState.isScoring {
+            return true
+        }
+        return false
+    }
+    
+    static func pulsating(beacon: COBBeacon, forGamerState gamerState: COBGamerState) -> Bool {
+        if let proximity = beacon.proximity where proximity != .Unknown && gamerState.isScoring {
+            return true
+        }
+        return false
     }
 }

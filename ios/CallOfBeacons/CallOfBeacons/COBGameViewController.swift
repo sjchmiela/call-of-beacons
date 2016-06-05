@@ -76,6 +76,8 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     }
     
     private func updateUserInterface() {
+        mapViewController?.gamerState = gamerState
+        
         nickLabel?.text = gamerState.nick.uppercaseString
         scoreLabel?.countFromCurrentValueTo(CGFloat(gamerState.score))
         
@@ -96,7 +98,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
             instructionsLabel?.text = "Grab the flag!"
         } else {
             if gamerState.canRevive {
-                instructionsLabel?.text = "Tap the revive button to revive."
+                instructionsLabel?.text = "Tap the HP bar to revive."
             } else {
                 instructionsLabel?.text = "Run to the nearest health point!"
             }
@@ -133,9 +135,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         }
         // Update positions on the server
         notifier.update(cobBeacons)
-        
         mapViewController?.beacons = cobBeacons
-        mapViewController?.gamerState = gamerState
         
         // Print the beacon info to the console
         for beacon in cobBeacons {
