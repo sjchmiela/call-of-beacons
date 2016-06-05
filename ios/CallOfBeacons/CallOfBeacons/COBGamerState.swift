@@ -23,6 +23,12 @@ class COBGamerState: CustomStringConvertible {
             }
         }
     }
+    var isScoring: Bool {
+        return healthPoints > 0
+    }
+    var shouldRevive: Bool {
+        return healthPoints == 0
+    }
     var description: String {
         return "State for gamer \(nick)\n\tHP: \(healthPoints)\n\tScore: \(score)"
     }

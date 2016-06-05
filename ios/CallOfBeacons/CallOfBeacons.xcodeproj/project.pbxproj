@@ -15,6 +15,7 @@
 		313085171D0346E8008D834A /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313085161D0346E8008D834A /* UIColor+HexString.swift */; };
 		313085191D036D0A008D834A /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313085181D036D0A008D834A /* CGRect+Center.swift */; };
 		3139DE041D0380160075C041 /* LFTPulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3139DE031D0380160075C041 /* LFTPulseAnimation.swift */; };
+		3139DE0E1D0419C50075C041 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3139DE0C1D0419C50075C041 /* UICountingLabel.m */; };
 		316098031D0041CA00D50ABB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098021D0041CA00D50ABB /* AppDelegate.swift */; };
 		316098081D0041CA00D50ABB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 316098061D0041CA00D50ABB /* Main.storyboard */; };
 		3160980A1D0041CA00D50ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 316098091D0041CA00D50ABB /* Assets.xcassets */; };
@@ -117,6 +118,8 @@
 		313085161D0346E8008D834A /* UIColor+HexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
 		313085181D036D0A008D834A /* CGRect+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
 		3139DE031D0380160075C041 /* LFTPulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFTPulseAnimation.swift; sourceTree = "<group>"; };
+		3139DE0C1D0419C50075C041 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
+		3139DE0D1D0419C50075C041 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
 		316097FF1D0041CA00D50ABB /* CallOfBeacons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallOfBeacons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		316098021D0041CA00D50ABB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		316098071D0041CA00D50ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 		3130850B1D030C66008D834A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3139DE0C1D0419C50075C041 /* UICountingLabel.m */,
+				3139DE0D1D0419C50075C041 /* UICountingLabel.h */,
 				3130850C1D03277F008D834A /* COBGridView.swift */,
 				313084FE1D02EBFD008D834A /* COBView.swift */,
 				313085141D034119008D834A /* COBBeaconView.swift */,
@@ -414,6 +419,7 @@
 				316098471D00AC5500D50ABB /* COBBeaconBehavior.swift in Sources */,
 				316098511D00ACFD00D50ABB /* COBHealthPointBehavior.swift in Sources */,
 				3160981F1D00551500D50ABB /* SwiftyJSON.swift in Sources */,
+				3139DE0E1D0419C50075C041 /* UICountingLabel.m in Sources */,
 				313085131D033FF0008D834A /* COBMapViewController.swift in Sources */,
 				3130850D1D03277F008D834A /* COBGridView.swift in Sources */,
 			);

@@ -12,7 +12,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     /// Outlets
     @IBOutlet weak var nickLabel: UILabel!
     @IBOutlet weak var healthPointsButton: UIButton!
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UICountingLabel!
     @IBOutlet weak var hitButton: UIButton!
     @IBOutlet weak var instructionsLabel: UILabel!
     
@@ -52,6 +52,10 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         super.viewDidLoad()
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
+        scoreLabel.format = "Score: %d"
+        scoreLabel.animationDuration = 0.5
+        scoreLabel.method = UILabelCountingMethod.EaseInOut
+        scoreLabel.countFromZeroTo(0)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -73,7 +77,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
     
     private func updateUserInterface() {
         nickLabel?.text = gamerState.nick.uppercaseString
-        scoreLabel?.text = "Score: \(gamerState.score)"
+        scoreLabel?.countFromCurrentValueTo(CGFloat(gamerState.score))
         
         healthPointsButton?.setTitle("HP: \(gamerState.healthPoints)", forState: UIControlState.Normal)
         healthPointsButton?.enabled = gamerState.canRevive
@@ -131,6 +135,7 @@ class COBGameViewController: UIViewController, ESTBeaconManagerDelegate {
         notifier.update(cobBeacons)
         
         mapViewController?.beacons = cobBeacons
+        mapViewController?.gamerState = gamerState
         
         // Print the beacon info to the console
         for beacon in cobBeacons {

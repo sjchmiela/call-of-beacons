@@ -11,6 +11,7 @@ import UIKit
 class COBMapViewController: UIViewController {
     @IBOutlet weak var beaconsView: UIView!
     var beaconsViews: [COBBeacon: COBBeaconView]!
+    var gamerState: COBGamerState?
     var beacons: [COBBeacon]?  {
         didSet {
             if let beacons = beacons where beaconsViews != nil {
@@ -63,10 +64,17 @@ class COBMapViewController: UIViewController {
                         view.hidden = false
                         view.layer.opacity = 1
                         view.frame.center = pointFor(beaconAngle, originatingFrom: origin, withRadius: CGFloat(proximity.rawValue) * proximityRadiusStep)
-                        if beacon.shouldPulse {
+                        if let gamerState = gamerState where gamerState.isScoring && beacon.shouldPulse {
                             view.pulse()
                         }
+                        if let behaviorName = beacon.behaviorName, let gamerState = gamerState where behaviorName == "healthPoint" && gamerState.shouldRevive {
+                            view.borderColor = UIColor.whiteColor()
+                        } else {
+                            view.borderColor = UIColor.blackColor()
+                        }
                     }
+                } else {
+                    view.layer.opacity = 0.25
                 }
                 beaconAngle += angleStep
             }

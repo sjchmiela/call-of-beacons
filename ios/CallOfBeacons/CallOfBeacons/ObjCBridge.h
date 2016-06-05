@@ -13,5 +13,6 @@
 // https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
 
 #import <EstimoteSDK/EstimoteSDK.h>
+#import "UICountingLabel.h"
 
 #endif /* ObjCBridge_h */
