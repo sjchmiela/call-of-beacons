@@ -12,11 +12,17 @@ class COBStartViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nickTextField: UITextField!
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var connectingToLabel: UILabel!
+    var url: String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        url = COBConfiguration.putPositionUrl
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let url = COBConfiguration.putPositionUrl {
+        if let url = url {
             connectingToLabel.text = "Sending position updates to:\n\(url)"
         } else {
             connectingToLabel.text = "URL for sending position updates\nis not configured."
@@ -29,6 +35,9 @@ class COBStartViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "GameStart" {
             let gameVC = segue.destinationViewController as! COBGameViewController
             gameVC.gamerState = COBGamerState(nick: nickTextField.text!)
+            if let url = url {
+                gameVC.notifier = COBPositionNotifier(url: url)
+            }
         }
     }
 

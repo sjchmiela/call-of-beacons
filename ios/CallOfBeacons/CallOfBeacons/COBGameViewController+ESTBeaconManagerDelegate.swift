@@ -21,7 +21,7 @@ extension COBGameViewController: ESTBeaconManagerDelegate {
             }
         }
         // Update positions on the server
-        notifier.update(cobBeacons)
+        notifier?.update(cobBeacons)
         mapViewController.beacons = cobBeacons
         mapViewController.gamerState = gamerState
         updateUserInterface()

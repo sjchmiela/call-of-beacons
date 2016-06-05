@@ -30,7 +30,7 @@ class COBGameViewController: UIViewController {
         proximityUUID: NSUUID(UUIDString: COBConfiguration.uuid!)!,
         identifier: "ranged region")
     var bluetoothManager: CBCentralManager!
-    let notifier = COBPositionNotifier(url: COBConfiguration.putPositionUrl!)
+    var notifier: COBPositionNotifier?
     
     /// Gamer state represented on screen
     var gamerState: COBGamerState!
@@ -39,8 +39,8 @@ class COBGameViewController: UIViewController {
     // MARK: - Object Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.beaconManager.delegate = self
-        self.beaconManager.requestWhenInUseAuthorization()
+        beaconManager.delegate = self
+        beaconManager.requestAlwaysAuthorization()
         scoreLabel.format = "Score: %d"
         scoreLabel.animationDuration = 0.5
         scoreLabel.method = UILabelCountingMethod.EaseInOut
@@ -50,17 +50,19 @@ class COBGameViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if !paused {
-            self.beaconManager.startRangingBeaconsInRegion(beaconRegion)
+            beaconManager.startRangingBeaconsInRegion(beaconRegion)
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(COBGameViewController.pauseButtonTapped), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(COBGameViewController.pause), name: UIApplicationDidEnterBackgroundNotification, object: nil)
         bluetoothManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: false])
+        updateUserInterface()
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         paused = true
-        self.beaconManager.stopRangingBeaconsInRegion(beaconRegion)
+        beaconManager.stopRangingBeaconsInRegion(beaconRegion)
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        bluetoothManager.delegate = nil
         bluetoothManager = nil
     }
     
