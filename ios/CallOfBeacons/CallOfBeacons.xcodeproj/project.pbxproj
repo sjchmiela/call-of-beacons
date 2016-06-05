@@ -38,6 +38,7 @@
 		316098551D00AF5600D50ABB /* COBFlagBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316098541D00AF5600D50ABB /* COBFlagBehavior.swift */; };
 		31CF19CB1D0466DB00DEE319 /* COBGameViewController+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CF19CA1D0466DB00DEE319 /* COBGameViewController+StatusBar.swift */; };
 		31CF19D31D0466F700DEE319 /* COBGameViewController+IBActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CF19D21D0466F700DEE319 /* COBGameViewController+IBActions.swift */; };
+		31CF19D51D04707000DEE319 /* COBGameViewController+CBCentralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CF19D41D04707000DEE319 /* COBGameViewController+CBCentralManagerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		316098541D00AF5600D50ABB /* COBFlagBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COBFlagBehavior.swift; sourceTree = "<group>"; };
 		31CF19CA1D0466DB00DEE319 /* COBGameViewController+StatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "COBGameViewController+StatusBar.swift"; sourceTree = "<group>"; };
 		31CF19D21D0466F700DEE319 /* COBGameViewController+IBActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "COBGameViewController+IBActions.swift"; sourceTree = "<group>"; };
+		31CF19D41D04707000DEE319 /* COBGameViewController+CBCentralManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "COBGameViewController+CBCentralManagerDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				313085061D02FA56008D834A /* COBStartViewController.swift */,
 				316098181D00453600D50ABB /* COBGameViewController.swift */,
+				31CF19D41D04707000DEE319 /* COBGameViewController+CBCentralManagerDelegate.swift */,
 				31CF19D21D0466F700DEE319 /* COBGameViewController+IBActions.swift */,
 				31CF19CA1D0466DB00DEE319 /* COBGameViewController+StatusBar.swift */,
 				3139DE151D04618A0075C041 /* COBGameViewController+ESTBeaconManagerDelegate.swift */,
@@ -414,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31CF19D51D04707000DEE319 /* COBGameViewController+CBCentralManagerDelegate.swift in Sources */,
 				313085191D036D0A008D834A /* CGRect+Center.swift in Sources */,
 				313085071D02FA56008D834A /* COBStartViewController.swift in Sources */,
 				316098551D00AF5600D50ABB /* COBFlagBehavior.swift in Sources */,

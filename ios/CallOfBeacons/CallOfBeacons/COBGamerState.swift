@@ -49,7 +49,7 @@ class COBGamerState: CustomStringConvertible {
     
     /// Called when the gamer is killed.
     func hit() {
-        healthPoints -= COBConfiguration.hitDeduction
+        healthPoints += COBConfiguration.hitDeduction
     }
     
     var instructionText: String {

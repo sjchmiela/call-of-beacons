@@ -29,6 +29,7 @@ class COBGameViewController: UIViewController {
     let beaconRegion = CLBeaconRegion(
         proximityUUID: NSUUID(UUIDString: COBConfiguration.uuid!)!,
         identifier: "ranged region")
+    var bluetoothManager: CBCentralManager!
     let notifier = COBPositionNotifier(url: COBConfiguration.putPositionUrl!)
     
     /// Gamer state represented on screen
@@ -52,6 +53,7 @@ class COBGameViewController: UIViewController {
             self.beaconManager.startRangingBeaconsInRegion(beaconRegion)
         }
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(COBGameViewController.pauseButtonTapped), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        bluetoothManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey: false])
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -59,6 +61,7 @@ class COBGameViewController: UIViewController {
         paused = true
         self.beaconManager.stopRangingBeaconsInRegion(beaconRegion)
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        bluetoothManager = nil
     }
     
     func updateUserInterface() {

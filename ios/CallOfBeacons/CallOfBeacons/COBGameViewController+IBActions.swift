@@ -24,6 +24,10 @@ extension COBGameViewController {
     }
     
     @IBAction func pauseButtonTapped(sender: UIButton) {
+        pause()
+    }
+    
+    func pause() {
         paused = true
         self.beaconManager.stopRangingBeaconsInRegion(beaconRegion)
         mapViewController.beacons = []
@@ -31,8 +35,12 @@ extension COBGameViewController {
     }
     
     @IBAction func resumeButtonTapped(sender: UIButton) {
-        paused = false
-        self.beaconManager.startRangingBeaconsInRegion(beaconRegion)
-        updateUserInterface()
+        if bluetoothManager.state != .PoweredOn {
+            centralManagerDidUpdateState(bluetoothManager)
+        } else {
+            paused = false
+            self.beaconManager.startRangingBeaconsInRegion(beaconRegion)
+            updateUserInterface()
+        }
     }
 }
