@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Header from './Header/Header';
 import Console from '../Console/Console';
 import Dashboard from '../Dashboard/Dashboard';
+import Leaderboard from '../Leaderboard/Leaderboard';
+import TitledBlock from '../Block/TitledBlock';
+import R from 'ramda';
 import './App.scss';
 import configuration from 'json!../../../configuration.json';
 
@@ -15,12 +18,27 @@ export default class App extends Component {
     websocket.onopen = () => this._onOpen();
     websocket.onclose = () => this._onClose();
 
+    this._clearGamersInterval = setInterval(() => this._clearGamers(), 5000);
+
     this.state = {
       websocket,
       error: undefined,
       messages: [],
       gamers: {},
     };
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._clearGamersInterval);
+  }
+
+  _clearGamers() {
+    const gamersArray = R.values(this.state.gamers);
+    const now = new Date();
+    const filteredGamers = R.filter((state) => now - state.updated_at < 5000, gamersArray);
+    var gamers = {};
+    R.forEach((state) => gamers[state.gamer.nick] = state, filteredGamers);
+    this.setState({ gamers });
   }
 
   _onOpen() {
@@ -31,6 +49,7 @@ export default class App extends Component {
     const parsedMessage = JSON.parse(message.data);
     const gamers = this.state.gamers;
     gamers[parsedMessage.gamer.nick] = parsedMessage;
+    gamers[parsedMessage.gamer.nick].updated_at = new Date();
     this.setState({
       messages: [message].concat(this.state.messages),
       gamers,
@@ -65,6 +84,7 @@ export default class App extends Component {
             knownBeacons={configuration.beacons}
             gamers={this.state.gamers}
           />
+          <Leaderboard gamers={this.state.gamers} />
         </div>
       </div>
     );
