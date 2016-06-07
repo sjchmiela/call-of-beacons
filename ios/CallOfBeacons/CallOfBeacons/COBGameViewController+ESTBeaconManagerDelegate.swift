@@ -20,10 +20,7 @@ extension COBGameViewController: ESTBeaconManagerDelegate {
                 gamerState = behavior.beaconIsInRange(beacon, forGamerState: gamerState)
             }
         }
-        // Update positions on the server
-        mapViewController.beacons = cobBeacons
-        mapViewController.gamerState = gamerState
-        update(gamerState, beacons: cobBeacons)
+        self.beacons = cobBeacons
         updateUserInterface()
         
         // Print the beacon info to the console

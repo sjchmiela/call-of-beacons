@@ -35,6 +35,7 @@ class COBGameViewController: UIViewController {
     /// Gamer state represented on screen
     var gamerState: COBGamerState!
     var paused = false
+    var beacons = [COBBeacon]()
     
     // MARK: - Object Lifecycle
     override func viewDidLoad() {
@@ -71,6 +72,10 @@ class COBGameViewController: UIViewController {
         pauseButton.hidden = paused
         resumeButton.hidden = !paused
         exitButton.hidden = !paused
+        
+        mapViewController?.beacons = beacons
+        mapViewController?.gamerState = gamerState
+        update(gamerState, beacons: beacons)
         
         nickLabel.text = gamerState.nick.uppercaseString
         scoreLabel.countFromCurrentValueTo(CGFloat(gamerState.score))
