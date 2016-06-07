@@ -23,6 +23,7 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loaders: ['react-hot', 'jsx?harmony', 'babel-loader'], exclude: /node_modules/ },
       { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
+      { test: /\.css$/, loader: 'style!css!' },
     ]
   }
 };

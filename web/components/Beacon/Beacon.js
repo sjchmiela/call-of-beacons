@@ -1,14 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classNames';
 import Isvg from 'react-inlinesvg';
+import { Tooltip } from 'pui-react-tooltip';
+import { OverlayTrigger } from 'pui-react-overlay-trigger';
 
 export default class Beacon extends Component {
   static propTypes = {
-    color: PropTypes.string,
+    beacon: PropTypes.object,
   }
 
-  static defaultProps = {
-    color: '#ffffff',
+  _renderTooltip() {
+    const name = this.props.beacon.name ? ` “${this.props.beacon.name}”` : null;
+    return (
+      <Tooltip>
+        Beacon{name}<br />
+      {this.props.beacon.major} : {this.props.beacon.minor}
+      </Tooltip>
+    );
   }
 
   render() {
@@ -16,12 +24,16 @@ export default class Beacon extends Component {
     const styles = {
       ...this.props.style,
       'alignSelf': 'flex-start',
-    };
+      position: 'relative',
+      'fill': this.props.beacon.color || '#ffffff',
+    }
 
     return (
-      <div {...this.props} style={styles} className={className}>
-        <Isvg src="/images/beacon.svg" style={{ fill: this.props.color }} />
-      </div>
+      <OverlayTrigger placement="top" overlay={this._renderTooltip()}>
+        <div {...this.props} style={styles} className={className}>
+          <Isvg src="/images/beacon.svg" />
+        </div>
+      </OverlayTrigger>
     );
   }
 }

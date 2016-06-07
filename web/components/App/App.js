@@ -3,6 +3,7 @@ import Header from './Header/Header';
 import Console from '../Console/Console';
 import Dashboard from '../Dashboard/Dashboard';
 import './App.scss';
+import configuration from 'json!../../../configuration.json';
 
 export default class App extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ export default class App extends Component {
         <Header status={this._status()} />
         <div className="App-content">
           <Console messages={this.state.messages} />
-          <Dashboard />
+          <Dashboard knownBeacons={configuration.beacons} />
         </div>
       </div>
     );
