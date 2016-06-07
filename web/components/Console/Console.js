@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Block from '../Block/Block';
+import TitledBlock from '../Block/TitledBlock';
 import './Console.scss';
 
 export default class Console extends Component {
@@ -39,14 +39,11 @@ export default class Console extends Component {
 
   render() {
     return (
-      <div className="Console">
-        <div className="Console-header"><h1>Console</h1></div>
-        <Block className="Console">
-          <div className="Console-content">
-            {this._renderMessages(this.props.messages)}
-          </div>
-        </Block>
-      </div>
+      <TitledBlock title="Console" className="Console">
+        <div className="Console-content">
+          {this._renderMessages(this.props.messages)}
+        </div>
+      </TitledBlock>
     );
   }
 }
