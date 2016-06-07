@@ -39,10 +39,10 @@ export default class Console extends Component {
 
   render() {
     return (
-      <TitledBlock title="Console" className="Console">
+      <TitledBlock title="Console" className="Console" blockClassName="Console-block">
         <div className="Console-content">
-          {this._renderMessages(this.props.messages)}
-        </div>
+        {this._renderMessages(this.props.messages)}
+      </div>
       </TitledBlock>
     );
   }
