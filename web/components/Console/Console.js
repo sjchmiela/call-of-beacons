@@ -10,7 +10,7 @@ export default class Console extends Component {
   _renderMessage(message, index) {
     return (
       <div className="Console-message" key={index}>
-        {message.data}
+        <pre>{JSON.stringify(JSON.parse(message.data), null, 2)}</pre>
         <div className="Console-message-timestamp">
           {new Date(message.timeStamp).toString()}
         </div>

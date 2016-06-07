@@ -23,15 +23,40 @@ export default class Beacon extends Component {
     const className = classNames('Beacon', this.props.className);
     const styles = {
       ...this.props.style,
-      'alignSelf': 'flex-start',
+      alignSelf: 'flex-start',
       position: 'relative',
-      'fill': this.props.beacon.color || '#ffffff',
+      fill: this.props.beacon.color || '#ffffff',
+      opacity: this.props.beacon.layout ? 1 : 0.5,
+      cursor: 'move',
     }
 
     return (
       <OverlayTrigger placement="top" overlay={this._renderTooltip()}>
-        <div {...this.props} style={styles} className={className}>
+        <div
+          {...this.props}
+          style={styles}
+          className={className}
+          data-immediate-proximity-radius={this.props.immediateProximityRadius}
+        >
           <Isvg src="/images/beacon.svg" />
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            fontSize: '0.618em',
+            display: 'flex',
+            textAlign: 'center',
+            alignItems: 'center',
+            opacity: this.props.beacon.layout ? 0 : 1,
+            borderRadius: '1em',
+            background: 'rgba(0,0,0,0.5)',
+            color: '#fff',
+            cursor: 'inherit',
+          }}>
+            Position me to&nbsp;start.
+          </div>
         </div>
       </OverlayTrigger>
     );

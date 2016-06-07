@@ -13,12 +13,9 @@ extension COBGameViewController: COBNotifier {
     func update(gamerState: COBGamerState, beacons: [COBBeacon]) -> Void {
         if let url = notifyUrl {
             let beaconParameters = COBBeacon.beaconsToParameters(beacons)
-            let gamerParameters = gamerState.toParameters()
-            let parameters = [
-                "gamer": gamerParameters,
-                "beacons": beaconParameters
-            ]
-            Alamofire.request(.PUT, url, parameters: parameters, encoding: ParameterEncoding.JSON, headers: nil).validate()
+            var gamerParameters = gamerState.toParameters()
+            gamerParameters["beacons"] = beaconParameters
+            Alamofire.request(.PUT, url, parameters: ["gamer": gamerParameters], encoding: ParameterEncoding.JSON, headers: nil).validate()
         }
     }
 }

@@ -23,6 +23,7 @@ export default function Circle(props) {
     ...props.style,
     width: props.size,
     height: props.size,
+    zIndex: 20,
   };
 
   if (props.top) { styles.top = minusOffset; }

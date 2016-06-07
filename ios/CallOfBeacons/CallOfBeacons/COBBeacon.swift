@@ -90,17 +90,14 @@ extension COBBeacon {
     }
     
     /// Turn array of beacons to parameters sendable through HTTP request
-    static func beaconsToParameters(beacons: [COBBeacon]) -> [String: AnyObject] {
-        let initialDictionary = [String: AnyObject]()
-        return beacons.reduce(initialDictionary) { (dictionary, beacon) -> [String: AnyObject] in
-            if let proximity = beacon.proximity {
-                var mutableDictionary = dictionary
-                mutableDictionary["\(beacon.major!):\(beacon.minor!)"] = proximity.rawValue
-                return mutableDictionary
-            } else {
-                return dictionary
-            }
-        }
+    static func beaconsToParameters(beacons: [COBBeacon]) -> [AnyObject] {
+        return beacons.map({ (beacon) -> AnyObject in
+            return [
+                "major": beacon.major!,
+                "minor": beacon.minor!,
+                "proximity": beacon.proximity?.rawValue ?? 0
+            ]
+        })
     }
 }
 

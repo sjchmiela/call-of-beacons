@@ -89,4 +89,32 @@
     rgba(64, 82, 92, 0.0) 91px,
     rgba(64, 82, 92, 0.0) 100px
   );
+
+  &-bottomField {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background: #122934;
+    border: 1px solid #3F525B;
+    border-bottom: none;
+    border-right: none;
+    color: #869AA7;
+    z-index: 0;
+    padding-left: 5px;
+  }
+
+  &-textField {
+    margin-left: 0.618em;
+    background: #122934;
+    color: #869AA7;
+    border: none;
+    width: 4.618em;
+  }
+
+  &-Beacon {
+    align-self:flex-start;
+    border-radius: 50%;
+    border: 1px solid #3F525B;
+  }
 }
