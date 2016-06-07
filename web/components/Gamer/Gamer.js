@@ -64,10 +64,22 @@ export default class Gamer extends Component {
       transition: 'all 0.5s ease',
     };
 
+    const nickStyles = {
+      position: 'absolute',
+      bottom: 0,
+      fontSize: '0.618em',
+      lineHeight: '2.618em',
+      left: 0,
+      right: 0,
+      textAlign: 'center',
+      color: '#122934',
+    };
+
     return (
-      <OverlayTrigger placement="top" overlay={this._renderTooltip()} display={true} trigger="manual" disableScrim>
+      <OverlayTrigger placement="top" overlay={this._renderTooltip()}>
         <div {...this.props} style={styles} className={className}>
           <Isvg src="/images/user.svg" />
+          <span style={nickStyles}>{this.props.gamer.nick}</span>
         </div>
       </OverlayTrigger>
     );
