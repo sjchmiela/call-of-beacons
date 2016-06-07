@@ -5,21 +5,12 @@ import { Tooltip } from 'pui-react-tooltip';
 import { OverlayTrigger } from 'pui-react-overlay-trigger';
 import R from 'ramda';
 import mean from '../../utils/mean';
+import './Gamer.scss';
 
 export default class Gamer extends Component {
   static propTypes = {
     beacons: PropTypes.array,
     gamer: PropTypes.object,
-  }
-
-  _renderTooltip() {
-    return (
-      <Tooltip>
-        <strong>{this.props.gamer.nick}</strong><br />
-        HP: {this.props.gamer.healthPoints}<br />
-        Score: {this.props.gamer.score}
-      </Tooltip>
-    )
   }
 
   _findBeacon(beacon, array) {
@@ -51,35 +42,29 @@ export default class Gamer extends Component {
     };
   }
 
+  _renderTooltip() {
+    return (
+      <Tooltip>
+        <strong>{this.props.gamer.nick}</strong><br />
+        HP: {this.props.gamer.healthPoints}<br />
+        Score: {this.props.gamer.score}
+      </Tooltip>
+    )
+  }
+
   render() {
     const position = this._position();
     const className = classNames('Gamer', this.props.className);
     const styles = {
       ...this.props.style,
-      alignSelf: 'flex-start',
-      position: 'absolute',
-      top: 0,
-      left: 0,
       transform: `translate(${position.x}px, ${position.y}px)`,
-      transition: 'all 0.5s ease',
-    };
-
-    const nickStyles = {
-      position: 'absolute',
-      bottom: 0,
-      fontSize: '0.618em',
-      lineHeight: '2.618em',
-      left: 0,
-      right: 0,
-      textAlign: 'center',
-      color: '#122934',
     };
 
     return (
       <OverlayTrigger placement="top" overlay={this._renderTooltip()}>
         <div {...this.props} style={styles} className={className}>
           <Isvg src="/images/user.svg" />
-          <span style={nickStyles}>{this.props.gamer.nick}</span>
+          <span className="Gamer-nick">{this.props.gamer.nick}</span>
         </div>
       </OverlayTrigger>
     );
