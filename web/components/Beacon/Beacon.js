@@ -14,7 +14,7 @@ export default class Beacon extends Component {
     return (
       <Tooltip>
         Beacon{name}<br />
-      {this.props.beacon.major} : {this.props.beacon.minor}
+        {this.props.beacon.major} : {this.props.beacon.minor}
       </Tooltip>
     );
   }
