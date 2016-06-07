@@ -36,7 +36,7 @@ class COBStartViewController: UIViewController, UITextFieldDelegate {
             let gameVC = segue.destinationViewController as! COBGameViewController
             gameVC.gamerState = COBGamerState(nick: nickTextField.text!)
             if let url = url {
-                gameVC.notifier = COBPositionNotifier(url: url)
+                gameVC.notifyUrl = url
             }
         }
     }

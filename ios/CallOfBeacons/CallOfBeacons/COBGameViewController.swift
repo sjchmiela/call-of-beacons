@@ -30,7 +30,7 @@ class COBGameViewController: UIViewController {
         proximityUUID: NSUUID(UUIDString: COBConfiguration.uuid!)!,
         identifier: "ranged region")
     var bluetoothManager: CBCentralManager!
-    var notifier: COBPositionNotifier?
+    var notifyUrl: String?
     
     /// Gamer state represented on screen
     var gamerState: COBGamerState!

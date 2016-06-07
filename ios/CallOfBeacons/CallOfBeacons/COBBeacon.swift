@@ -88,6 +88,20 @@ extension COBBeacon {
         
         return nil
     }
+    
+    /// Turn array of beacons to parameters sendable through HTTP request
+    static func beaconsToParameters(beacons: [COBBeacon]) -> [String: AnyObject] {
+        let initialDictionary = [String: AnyObject]()
+        return beacons.reduce(initialDictionary) { (dictionary, beacon) -> [String: AnyObject] in
+            if let proximity = beacon.proximity {
+                var mutableDictionary = dictionary
+                mutableDictionary["\(beacon.major!):\(beacon.minor!)"] = proximity.rawValue
+                return mutableDictionary
+            } else {
+                return dictionary
+            }
+        }
+    }
 }
 
 /// Comparison implementation

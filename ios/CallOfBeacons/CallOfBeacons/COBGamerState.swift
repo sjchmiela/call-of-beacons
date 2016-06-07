@@ -64,4 +64,12 @@ class COBGamerState: CustomStringConvertible {
             }
         }
     }
+    
+    func toParameters() -> [String: AnyObject] {
+        return [
+            "nick": nick,
+            "healthPoints": healthPoints,
+            "score": score,
+        ]
+    }
 }
