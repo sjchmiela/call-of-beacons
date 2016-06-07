@@ -19,6 +19,7 @@ export default class App extends Component {
       websocket,
       error: undefined,
       messages: [],
+      gamers: {},
     };
   }
 
@@ -27,8 +28,12 @@ export default class App extends Component {
   }
 
   _onMessage(message) {
+    const parsedMessage = JSON.parse(message.data);
+    const gamers = this.state.gamers;
+    gamers[parsedMessage.gamer.nick] = parsedMessage;
     this.setState({
       messages: [message].concat(this.state.messages),
+      gamers,
     });
   }
 
@@ -56,7 +61,10 @@ export default class App extends Component {
         <Header status={this._status()} />
         <div className="App-content">
           <Console messages={this.state.messages} />
-          <Dashboard knownBeacons={configuration.beacons} />
+          <Dashboard
+            knownBeacons={configuration.beacons}
+            gamers={this.state.gamers}
+          />
         </div>
       </div>
     );
