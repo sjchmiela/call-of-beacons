@@ -26,11 +26,12 @@
   }
 
   &-healthBar {
+    transition: height 0.5s ease-in-out;
     background: green;
     position: absolute;
     left: 0;
     bottom: 0;
     right: 0;
-    height: 50%;
+    height: 100%;
   }
 }
