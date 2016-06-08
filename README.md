@@ -15,3 +15,43 @@ Zadaniem serwera jest dokonanie obliczeń, rozstrzygających o przynależności 
 Nasz projekt realizuje część powyższej gry. Zaimplementowaliśmy aplikację mobilną na telefon komunikującą się z beaconem lub beaconami (w miarę możliwości pożyczenia) i serwerem. Aplikacja sprawdza periodycznie odległości do beaconów, a następnie przesyła te dane do serwera. Serwer przekazuje dane o pozycjach do jednego (lub więcej) klienta (będącego sędzią, graczem lub widzem), który prezentuje sytuację gry w sposób czytelny dla człowieka, a konkretnie w postaci strony internetowej.
 
 Aplikację mobilną napisaliśmy na system iOS w języku Swift z wykorzystaniem SDK od Estimote. Serwer napisaliśmy w node-red. Komunikacja między nimi zachodzi z wykorzystaniem protokołu HTTP. Interfejsem użytkownika jest strona internetowa połączona z serwerem node-red przez websocket. Strona (lub więcej jej instancji) odbiera informacje o pozycjach graczy i aktualizowała kolor wyświetlanych prostokątów symbolizujących lampy.
+
+## Komunikaty
+
+Aplikacja mobilna przesyła zapytanie do serwera w Node-red o następującej treści:
+
+```
+{
+  "gamer": {
+    "nick": Nazwa gracza,
+    "healthPoints": Ilość punktów zdrowia gracza,
+    "beacons": [
+      {
+        "proximity": CLProximity,
+        "major": Major Beacona,
+        "minor": Minor Beacona
+      },
+    ],
+    "score": Ilość punktów zdobytych przez gracza
+  }
+}
+```
+
+Ten sam komunikat jest natychmiast przekazywany do wszystkich podłączonych przez Websocket przeglądarek.
+
+## Uruchomienie
+
+1. Pobrać repozytorium.
+2. Zmodyfikować plik `configuration.json` odpowiednio do warunków uruchomienia.
+3. Wykonać komendy `npm install` w katalogach `server/` oraz `web/`.
+4. Wykonać komendy `npm start` w katalogach `server/` oraz `web/`.
+5. Zbudować projekt na iOS z nową konfiguracją, uruchomić aplikację, wpisać nazwę użytkownika i dołączyć do gry.
+6. Otworzyć interfejs sędziego (http://localhost:3000/).
+
+## Technologie
+
+W aplikacji mobilnej wykorzystujemy język Swift do szkieletu, do przesyłania zapytań HTTP framework Alamofire, do wykrywania beaconów Estimote SDK.
+
+W serwerze wykorzystujemy tylko aplikację Node-red.
+
+W aplikacji internetowej wykorzystujemy Webpack do serwowania plików statycznych, React do renderowania interfejsu użytkownika, przeglądarkowy Websocket do podłączenia się do websocketa serwera.
