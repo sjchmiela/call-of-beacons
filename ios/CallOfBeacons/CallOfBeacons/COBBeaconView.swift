@@ -48,7 +48,7 @@ class COBBeaconView: UIView {
             }
             
             if let proximity = beacon.proximity {
-                layer.opacity = proximity == .Unknown ? 0.5 : 1
+                layer.opacity = proximity == .Unknown ? (layer.opacity == 0 ? 0 : 0.5) : 1
                 if let radius = beacon.behavior?.pulseRadius(beacon, forGamerState: gamerState), let shapeLayer = shapeLayer {
                     pulseAnimationLayer?.removeFromSuperlayer()
                     pulseAnimationLayer = LFTPulseAnimation(repeatCount: 1, radius: radius, position: bounds.center)
