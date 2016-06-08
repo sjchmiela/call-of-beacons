@@ -30,7 +30,7 @@ extension COBGameViewController {
     func pause() {
         paused = true
         beaconManager.stopRangingBeaconsInRegion(beaconRegion)
-        mapViewController.beacons = []
+        beacons = []
         updateUserInterface()
     }
     
