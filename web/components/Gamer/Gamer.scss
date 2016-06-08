@@ -15,4 +15,22 @@
     text-align: center;
     color: #122934;
   }
+
+  &-healthBarWrapper {
+    display: block;
+    position: absolute;
+    right: -6px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+  }
+
+  &-healthBar {
+    background: green;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50%;
+  }
 }

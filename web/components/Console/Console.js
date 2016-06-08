@@ -21,7 +21,7 @@ export default class Console extends Component {
   _renderNoMessageInfo() {
     return (
       <div className="Console-message">
-        No messages received yet.
+        <pre>No messages received yet.</pre>
         <div className="Console-message-timestamp">
           {new Date().toString()}
         </div>

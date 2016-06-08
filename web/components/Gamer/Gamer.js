@@ -42,6 +42,12 @@ export default class Gamer extends Component {
     };
   }
 
+  _hpBarStyles() {
+    return {
+      height: `${this.props.gamer.healthPoints}%`,
+    };
+  }
+
   _renderTooltip() {
     return (
       <Tooltip>
@@ -58,6 +64,7 @@ export default class Gamer extends Component {
     const styles = {
       ...this.props.style,
       transform: `translate(${position.x}px, ${position.y}px)`,
+      fill: this.props.gamer.healthPoints > 0 ? '#fff' : '#f00',
     };
 
     return (
@@ -65,6 +72,9 @@ export default class Gamer extends Component {
         <div {...this.props} style={styles} className={className}>
           <Isvg src="/images/user.svg" />
           <span className="Gamer-nick">{this.props.gamer.nick}</span>
+          <div className="Gamer-healthBarWrapper">
+            <div className="Gamer-healthBar" style={this._hpBarStyles()} />
+          </div>
         </div>
       </OverlayTrigger>
     );
