@@ -1,6 +1,7 @@
 {
   "UUID": "B9407F30-F5F8-466E-AFF9-25556B57FE6D",
   "putPositionUrl": "http://10.22.112.240:1880/beacons/",
+  "websocketUpdateUrl": "ws://127.0.0.1:1880/ws/positions",
   "beacons": [
     { "major": 1, "minor": 1, "behavior": "flag", "name": "Violet", "color": "#665297" },
     { "major": 1, "minor": 2, "behavior": "healthPoint", "name": "Blue", "color": "#98D4F1" },

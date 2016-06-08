@@ -12,7 +12,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    const websocket = new WebSocket('ws://127.0.0.1:1880/ws/positions');
+    const websocket = new WebSocket(configuration.websocketUpdateUrl);
     websocket.onmessage = (data) => this._onMessage(data);
     websocket.onerror = () => this._onError();
     websocket.onopen = () => this._onOpen();
@@ -77,7 +77,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header status={this._status()} />
+        <Header status={this._status()} connectionUrl={configuration.websocketUpdateUrl} />
         <div className="App-content">
           <Console messages={this.state.messages} />
           <Dashboard
